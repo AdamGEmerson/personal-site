@@ -1,0 +1,150 @@
+:root {
+	--whiteColor: #FFF;
+	--mainColor: #2945FF;
+	--secondaryColor: #FBC78B;
+	--tertiaryColor: #252691;
+}
+
+@font-face {
+  font-family: Gilroy;
+  src: url(fonts/Gilroy-Bold.woff);
+}
+
+body {
+	font-family: Gilroy;
+	height: 100%;
+	width: 100%;
+}
+
+
+a {
+	color: white;
+	text-decoration: none;
+	position: relative;
+}
+
+a:hover span {
+  transform: translateX(0);
+}
+
+a:hover span::before {
+  transform: translateX(0);
+}
+
+span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+
+  transform: translateX(-100%);
+  transition: transform 275ms ease;
+}
+
+span::before { 
+  display: inline-block;
+  content: attr(data-content);
+  color: black;
+  transform: translateX(100%);
+  transition: transform 275ms ease;
+}
+
+li {
+	color: white;
+}
+
+.material {
+	height: 100%;
+	width: 85%;
+	border-top-right-radius:
+	background-color: var(--mainColor);
+}
+
+.header {
+	float: left;
+	width: 100%;
+	height: 100%;
+	margin: 5%;
+}
+
+.main {
+	width: 100%;
+	margin-left: 5%;
+	display: flex;
+	align-items: flex-end;
+}
+
+#name {
+	color: #252691;
+	font-size: 56px;
+	margin-top: 0%;
+}
+
+#title {
+	color: #2945FF;
+	font-size: 72px;
+}
+
+#illustration {
+	width: 35%;
+	overflow: visible;
+	z-index: 1;
+}
+
+#illustration img{
+	width: 130%;
+	overflow: visible;
+	height: auto;
+}
+
+.porthole {
+	width: 80%;
+	height: 35vw;
+	border-radius: 36% 71% 56% 54% / 100% 61% 85% 56%;
+	box-shadow: inset 2px 2px 16px rgba(0, 0, 0, 0.25);
+
+	background-size: 200%;
+	background-position: left;
+	background-color: #FBC78B;
+	background-image: linear-gradient(300deg, #2945FF 30%, #9072C6 110%);
+	animation: porthole-animation 20s infinite linear;
+}
+
+.nav {
+	display: inline-block;
+	align-content: center;
+	font-size: 4vw;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+	list-style: none;
+	padding-top: 8%;
+	padding-left: 20%;
+	height: 100%;
+	width: 80%;
+}
+
+.nav ul {
+	width: 100%
+	height: 100%;
+	margin: auto;
+}
+
+.nav li {
+	margin-bottom: 4%;
+}
+
+@keyframes porthole-animation {
+	0% {
+		background-position: left;
+		border-radius: 36% 64% 54% 46% / 70% 61% 39% 49%;
+	}
+	50% { 
+		background-position: right;
+		border-radius: 64% 36% 46% 54% / 49% 39% 61% 71%;
+	}
+	100% {
+		background-position: left;
+		border-radius: 36% 64% 54% 46% / 70% 61% 39% 49%;
+	}
+	}
+}
+
