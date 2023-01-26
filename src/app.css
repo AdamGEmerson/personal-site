@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @font-face {
+        font-family: Swomun Serif;
+        font-style: normal;
+        font-weight: 400;
+        src: url('/fonts/swomun/swomun-serif.ttf') format('truetype');
+    }
+
+    @font-face {
+        font-family: Nexa;
+        font-style: normal;
+        font-weight: 200;
+        src: url('/fonts/nexa/Nexa-Trial-Thin.otf') format('opentype');
+    }
+    @font-face {
+        font-family: Nexa;
+        font-style: normal;
+        font-weight: 300;
+        src: url('/fonts/nexa/Nexa-Trial-Book.otf') format('opentype');
+    }
+
+    @font-face {
+        font-family: Nexa;
+        font-style: normal;
+        font-weight: 400;
+        src: url('/fonts/nexa/Nexa-Trial-Regular.otf') format('opentype');
+    }
+
+    @font-face {
+        font-family: Nexa;
+        font-style: normal;
+        font-weight: 600;
+        src: url('/fonts/nexa/Nexa-Trial-Bold.otf') format('opentype');
+    }
+
+    @font-face {
+        font-family: Nexa;
+        font-style: normal;
+        font-weight: 700;
+        src: url('/fonts/nexa/Nexa-Trial-ExtraBold.otf') format('opentype');
+    }
+
+    @font-face {
+        font-family: Nexa;
+        font-style: normal;
+        font-weight: 800;
+        src: url('/fonts/nexa/Nexa-Trial-Black.otf') format('opentype');
+    }
+}
