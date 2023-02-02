@@ -56,7 +56,7 @@ export const projects = writable({
         slug: 'asketch',
         title: 'ASketch',
         href: null,
-        githubHref: 'https://github.com/adamgemerson/asketch',
+        githubHref: null,
         description: 'ASKetch is a no-code solution for building unit tests in the software modelling language Alloy. This project is still in active development and is the primary work of my undergraduate research. More information is coming soon.',
         madeWith: [
             {name: 'Typescript', icon: IconBrandTypescript},
