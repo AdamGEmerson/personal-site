@@ -15,13 +15,18 @@
         </div>
         <div class="flex justify-between space-x-2 items-center flex-wrap">
             <LinkButton route="/work/{project.title.toLowerCase()}" text="More" icon={IconBook}/>
+
             <div class="flex justify-start align-middle gap-3 my-2">
-                <LinkIcon href={project.href}>
-                    <IconLink slot="icon" class="w-3/5 h-3/5 self-center text-dark-primary-text "/>
-                </LinkIcon>
+                {#if project.href}
+                    <LinkIcon href={project.href}>
+                        <IconLink slot="icon" class="w-3/5 h-3/5 self-center text-dark-primary-text "/>
+                    </LinkIcon>
+                {/if}
+                {#if project.githubHref}
                 <LinkIcon href={project.githubHref}>
                     <IconBrandGithub slot="icon" class="w-3/5 h-3/5 self-center text-dark-primary-text "/>
                 </LinkIcon>
+                {/if}
             </div>
         </div>
     </div>

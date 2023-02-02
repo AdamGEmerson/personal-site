@@ -13,19 +13,38 @@
 
 </script>
 
-<div class="flex justify-start flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 my-4">
-    <h1 class="text-5xl font-serif font-thin">{project.title}</h1>
+<div class="flex justify-start flex-col sm:flex-row flex-wrap items-start sm:items-center gap-6 my-4">
+    <h1 class="text-5xl sm:text-6xl font-serif font-thin">{project.title}</h1>
     <div class="flex flex-row justify-items-start space-x-4">
-        <LinkIcon href={project.href}>
-            <IconLink slot="icon" class="w-3/5 h-3/5 self-center text-dark-primary-text"/>
-        </LinkIcon>
-        <LinkIcon href={project.githubHref}>
-            <IconBrandGithub slot="icon" class="w-3/5 h-3/5 self-center text-dark-primary-text "/>
-        </LinkIcon>
+        {#if project.href}
+            <div class="h-12 w-12 sm:h-14 sm:w-14">
+
+                <a
+                        class="relative rounded-full h-full w-full flex flex-auto justify-around bg-gray-800 bg-opacity-60 transition-all duration-300 hover:bg-opacity-90"
+                        href={project.href}
+                        target="_blank"
+                        rel="noreferrer"
+                >
+                    <IconLink class="w-3/5 h-3/5 self-center text-dark-primary-text"/>
+                </a>
+            </div>
+        {/if}
+        {#if project.githubHref}
+            <div class="h-12 w-12 sm:h-14 sm:w-14">
+                <a
+                        class="relative rounded-full h-full w-full flex flex-auto justify-around bg-gray-800 bg-opacity-60 transition-all duration-300 hover:bg-opacity-90"
+                        href={project.githubHref}
+                        target="_blank"
+                        rel="noreferrer"
+                >
+                    <IconBrandGithub slot="icon" class="w-3/5 h-3/5 self-center text-dark-primary-text "/>
+                </a>
+            </div>
+        {/if}
     </div>
 </div>
 <h3 class="font-sans font-bold text-lg mt-12">Made With</h3>
-<div class="flex flex-row justify-items-start space-x-2 w-full pl-4">
+<div class="flex flex-row flex-wrap justify-items-start gap-2 w-full pl-4">
     {#each project.madeWith as tech}
         <div class="w-16 h-16 flex flex-col space-y-2 items-center">
             <svelte:component this={tech.icon} slot="icon" class="w-4/5 h-4/5 self-center text-dark-primary-text"/>

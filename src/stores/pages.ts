@@ -33,7 +33,7 @@ export const projects = writable({
     universe: {
         slug: 'universe',
         title: 'Universe',
-        href: 'https://github.com/UniVerse-App/UniVerse',
+        href: null,
         githubHref: 'https://github.com/UniVerse-App/UniVerse',
         description: 'UniVerse is a mobile application for Android phones designed to assist students and organizers alike in creating, managing, finding, and attending on-campus events. The app’s core feature is a personalized “feed” that will display upcoming events and activities relevant to each user. From the feed, users will be able to view details on each event and RSVP to events they wish to attend. UniVerse is written entirely in Java, and its dependencies include FirebaseAuth, FirebaseStorage, FirebaseDatabase, and Glide.',
         madeWith: [
@@ -48,7 +48,7 @@ export const projects = writable({
     asketch: {
         slug: 'asketch',
         title: 'ASketch',
-        href: 'https://github.com/adamgemerson/asketch',
+        href: null,
         githubHref: 'https://github.com/adamgemerson/asketch',
         description: 'ASKetch is a no-code solution for building unit tests in the software modelling language Alloy. This project is still in active development and is the primary work of my undergraduate research. More information is coming soon.',
         madeWith: [
