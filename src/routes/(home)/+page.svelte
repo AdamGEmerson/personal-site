@@ -28,7 +28,7 @@
                 alt="Abstract Illustration of a programmer"/>
     </div>
     <div class="h-screen relative">
-        <div class="flex flex-col justify-end content-center h-5/6 md:flex-row md:justify-between md:items-center md:px-8 xl:px-32">
+        <div class="flex flex-col justify-end content-center h-5/6 md:flex-row md:justify-between md:items-center">
             <div class="w-4/5 md:w-1/2 md:h-4/5 justify-self-end">
                 <div in:fade={{ duration:500, easing:quadInOut}} out:fade={{duration:200}}>
                     <div in:fly={{delay:100, duration:800, y:10, easing:quadInOut}}>
