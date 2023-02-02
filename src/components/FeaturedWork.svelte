@@ -1,8 +1,8 @@
 <script>
     import ProjectCard from "./ProjectCard.svelte";
-    import auragraph from "../../static/images/auragraph/auragraphPreview.png"
-    import universe from "../../static/images/universe/universePreview.png"
-    import asketch from "../../static/images/asketch/asketchPreview.png"
+    import auragraph from "../images/auragraph/auragraphPreview.png"
+    import universe from "../images/universe/universePreview.png"
+    import asketch from "../images/asketch/asketchPreview.png"
     import { projects } from "/src/stores/pages";
     import {onMount} from "svelte";
 

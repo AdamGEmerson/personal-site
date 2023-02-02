@@ -1,11 +1,8 @@
 <script lang="ts">
-    import {IconBook} from "@tabler/icons-svelte"
     import { goto } from '$app/navigation';
     export let route: string | URL;
     export let text;
     export let icon=null;
-    export let styles:string;
-    export let textSize = 'text-2xl';
 </script>
 
 <button class="theme-button w-24 sm:w-32 h-8 sm:h-12 font-bold text-white bg-gray-800 border-gray-800 border text-sm sm:text-xl rounded-2xl text-dark-primary-text"

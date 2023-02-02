@@ -7,6 +7,8 @@
     import {quadInOut} from "svelte/easing";
     import {onMount} from "svelte";
 
+    import illustration from "/src/images/home/splash_illustration_edit.png";
+
     export let data;
     let mounted = false;
     let y = 0;
@@ -22,7 +24,7 @@
     <div  class="absolute top-0 left-0 h-screen w-screen">
         <img in:fade={{delay: 100, duration: 500}} out:fade={{ duration: 200}}
                 class="w-fit px-4 md:h-4/5 mix-blend-color-dodge relative top-10 md:float-right md:pr-32 duration-1000 ease-linear {y < 150 ? 'opacity-40' : 'opacity-0'}"
-                src={"images/home/splash_illustration_edit.png"}
+                src={illustration}
                 alt="Abstract Illustration of a programmer"
                 loading="eager"
         />

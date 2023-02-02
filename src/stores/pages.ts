@@ -2,12 +2,19 @@ import {writable} from "svelte/store";
 import {
     IconAtom,
     IconBrandAndroid,
-    IconBrandD3, IconBrandFirebase, IconBrandMantine,
+    IconBrandD3, IconBrandFirebase,
     IconBrandNextjs, IconBrandPrisma, IconBrandReact,
     IconBrandSpotify,
     IconBrandSupabase,
     IconBrandTypescript, IconCoffee, IconDatabase
 } from "@tabler/icons-svelte";
+
+import auragraphTitle from "/src/images/auragraph/auragraphPreview.png"
+import auragraphGraph from "/src/images/auragraph/yourAuragraph.png"
+import auragraphHome from "/src/images/auragraph/auragraphHome.png"
+import auragraphExplore from "/src/images/auragraph/explorePage.png"
+import universeTitle from "/src/images/universe/universePreview.png"
+import asketchTitle from "/src/images/asketch/asketchPreview.png"
 
 export const projects = writable({
     auragraph: {
@@ -24,10 +31,10 @@ export const projects = writable({
             {name: 'Spotify API', icon: IconBrandSpotify}
         ],
         screenshots: [
-            {alt: 'Title Illustration', url: "/images/auragraph/auragraphPreview.png"},
-            {alt: 'Your Auragraph Page', url: "/images/auragraph/yourAuragraph.png"},
-            {alt: 'Auragraph Explore Page', url: "/images/auragraph/explorePage.png"},
-            {alt: 'Auragraph Home Page', url: "/images/auragraph/auragraphHome.png"},
+            {alt: 'Title Illustration', url: auragraphTitle},
+            {alt: 'Your Auragraph Page', url: auragraphGraph},
+            {alt: 'Auragraph Explore Page', url: auragraphExplore},
+            {alt: 'Auragraph Home Page', url: auragraphHome},
         ],
     },
     universe: {
@@ -42,7 +49,7 @@ export const projects = writable({
             {name: 'Java', icon: IconCoffee},
         ],
         screenshots: [
-            {alt: 'Title Illustration', url: '/images/universe/universePreview.png'},
+            {alt: 'Title Illustration', url: universeTitle},
         ],
     },
     asketch: {
@@ -59,7 +66,7 @@ export const projects = writable({
             {name: 'Prisma', icon: IconBrandPrisma}
         ],
         screenshots: [
-            {alt: 'Title Illustration', url: '/images/asketch/asketchPreview.png'},
+            {alt: 'Title Illustration', url: asketchTitle},
         ],
     }
 })

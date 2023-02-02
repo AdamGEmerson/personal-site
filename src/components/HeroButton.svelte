@@ -1,9 +1,7 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
     export let route: string | URL;
-    export let text;
     export let styles:string;
-    export let textSize = 'text-2xl';
 </script>
 
 <button class="theme-button {styles}  w-32 h-12 text-xl bg-gradient-to-br from-hero-blue to-hero-green font-sans font-bold text-theme-black drop-shadow-theme-button hover:drop-shadow-theme-button-hover"

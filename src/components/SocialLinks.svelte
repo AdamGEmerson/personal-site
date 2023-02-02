@@ -1,7 +1,6 @@
 <script>
     import { IconBrandGithub, IconBrandLinkedin, IconBrandDribbble} from "@tabler/icons-svelte";
     import LinkIcon from "./LinkIcon.svelte";
-    export let size = '16';
 </script>
 
 <div class="flex justify-start gap-6">
