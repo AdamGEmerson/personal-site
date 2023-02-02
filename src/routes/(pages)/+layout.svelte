@@ -1,13 +1,12 @@
 <script>
-    import PageTitle from "../../../components/PageTitle.svelte";
-    import {page} from "$app/stores";
-
-    console.log($page.route.id)
+    import PageTitle from "../../components/PageTitle.svelte";
+    export let data;
 </script>
 
-<div class="relative">
-    <PageTitle title="Title"/>
-    <slot></slot>
+<div class="relative sm:mx-16">
+    <PageTitle url={data.url} title={data.title}>
+        <slot />
+    </PageTitle>
 </div>
 
 

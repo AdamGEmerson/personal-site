@@ -4,7 +4,7 @@
     export let size = '16';
 </script>
 
-<div class="mt-16 flex justify-start gap-6">
+<div class="flex justify-start gap-6">
     <LinkIcon href="https://github.com/adamgemerson">
         <IconBrandGithub slot="icon" class="w-3/5 h-3/5 self-center text-dark-primary-text"/>
     </LinkIcon >

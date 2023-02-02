@@ -6,22 +6,21 @@
     export let textSize = 'text-2xl';
 </script>
 
-<button class="theme-button {styles} w-5/12 sm:w-32 lg:w-48 h-12 sm:h-16 bg-gradient-to-br from-hero-blue to-hero-green font-bold text-theme-black text-2xl drop-shadow-theme-button hover:drop-shadow-theme-button-hover"
+<button class="theme-button {styles}  w-32 h-12 text-xl bg-gradient-to-br from-hero-blue to-hero-green font-sans font-bold text-theme-black drop-shadow-theme-button hover:drop-shadow-theme-button-hover"
         on:click={goto(route)}>
-    {text}
+    Resume
 </button>
 
 <style>
     .theme-button {
-        /*animation: morph 8s ease-in-out infinite;*/
-        transition: all;
-        transition-duration: 1000ms;
+        transition: transform 300ms ease-in-out;
+        transform: scale(100%);
         border-radius: 36px 64px 43px 64px;
     }
 
     .theme-button:hover {
         transform: scale(105%);
-        transition-duration: 1000ms;
-        transition: all;
+        transition: transform 300ms ease-in-out;
     }
+
 </style>

@@ -1,14 +1,15 @@
-<script lang="ts">
-    import {IconMenu2, IconSun, IconX} from "@tabler/icons-svelte";
+``<script lang="ts">
+    import {IconCertificate2, IconCode, IconHome, IconMenu2, IconSun, IconX} from "@tabler/icons-svelte";
+    import {fly, slide} from "svelte/transition"
+    import {quadOut} from "svelte/easing";
     import NavLink from "./NavLink.svelte";
 
     let activeLink = 0;
 
     const links = [
-        { name: 'Home', route: '/' },
-        { name: 'CV', route: '/cv' },
-        { name: 'Work', route: '/work' },
-        { name: 'About', route: '/about' }
+        { name: 'Home', route: '/', icon: IconHome },
+        { name: 'Resume', route: '/resume', icon: IconCertificate2},
+        { name: 'Work', route: '/work', icon: IconCode },
     ]
 
     export let opened = false;
@@ -24,26 +25,26 @@
 
 </script>
 
-<div class="fixed top-0 left-0 z-40 px-8 py-4 w-screen flex justify-between transition-all duration-300 border-gray-800 border-b {y > 40 ? 'bg-black bg-opacity-30 backdrop-blur-sm' : '' } {opened ? '-translate-y-full' : 'translate-y-0'}">
+{#if opened}
+<div transition:fly={{duration: 400, x: -24, easing: quadOut}} class="fixed flex flex-col items-center space-y-1 justify-start top-0 left-0 z-40 h-screen w-20 transition-transform duration-500 ease-in-out bg-black sm:bg-transparent bg-opacity-80 backdrop-blur-sm border-r border-gray-800">
+    <button on:click={handleCloseNav} class="mb-4 pt-4">
+        <IconX />
+    </button>
+    {#each links as link, i}
+        <NavLink name={link.name} route={link.route} icon={link.icon} index={i} bind:activeLink={activeLink} on:closeNav={handleCloseNav} />
+    {/each}
+</div>
+{:else}
+<div transition:slide={{duration: 400, easing: quadOut}} class="fixed top-0 left-0 z-40 px-8 py-4 w-screen h-16 flex justify-between transition-all border-gray-800 duration-300 {y > 40 ? 'bg-black bg-opacity-30 backdrop-blur-sm border-gray-800 border-b' : '' }">
     <button on:click={handleOpenNav}>
         <IconMenu2 />
     </button>
-    <IconSun />
+<!--    <IconSun />-->
 </div>
-
-<div class="fixed top-0 left-0 z-40 h-screen w-1/3 px-8 py-4 overflow-y-auto transition-transform duration-500 ease-in-out bg-black bg-opacity-90 backdrop-blur-sm border-r border-gray-800 {opened ? 'translate-x-0' : '-translate-x-full'}">
-    <button on:click={handleCloseNav}>
-        <IconX />
-    </button>
-    <div class="my-8 mx-8 flex flex-col" >
-        {#each links as link, i}
-            <NavLink name={link.name} route={link.route} index={i} bind:activeLink={activeLink} on:closeNav={handleCloseNav} />
-        {/each}
-    </div>
-</div>
+{/if}
 
 <style>
 
 </style>
 
-<svelte:window bind:scrollY={y} />
+<svelte:window bind:scrollY={y} />``
