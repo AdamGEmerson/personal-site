@@ -8,11 +8,11 @@
     export let textSize = 'text-2xl';
 </script>
 
-<button class="theme-button w-32 md:w-32 h-12 font-bold text-white bg-gray-800 border-gray-800 border text-xl rounded-2xl text-dark-primary-text"
+<button class="theme-button w-24 sm:w-32 h-8 sm:h-12 font-bold text-white bg-gray-800 border-gray-800 border text-sm sm:text-xl rounded-2xl text-dark-primary-text"
         on:click={goto(route)}>
         <span class="flex justify-center space-x-2 mx-4 align-middle space-y-1 items-center">
             {#if icon}
-                <svelte:component this={icon} size="24"/>
+                <svelte:component this={icon} class="w-4 sm:w-8"/>
             {/if}
             <span>{text}</span>
         </span>

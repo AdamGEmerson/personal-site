@@ -1,40 +1,43 @@
 <script lang="ts">
     import LinkButton from "./LinkButton.svelte";
-    import {IconBook, IconBrandGithub, IconBrandLinkedin, IconLink} from "@tabler/icons-svelte";
+    import {IconBook, IconBrandGithub, IconLink} from "@tabler/icons-svelte";
     import LinkIcon from "./LinkIcon.svelte";
-    export let title: string;
-    export let link: string;
-    export let githubLink: string;
-    export let description: string;
-    export let image: string;
+
+    export let project;
 </script>
 
-<div class="max-w-md text-white bg-gray-500 rounded-3xl bg-gray-800 bg-opacity-10 border-gray-800 border overflow-hidden">
-    <img class="w-full h-1/2 border-b border-gray-800" src={image}  alt="Project Cover">
-    <div class="px-8 py-4">
-        <div class="h-1/2">
-            <div class="my-4">
-                <h3 class="font-serif font-bold text-4xl md:text-4xl">{title}</h3>
-                <div class="bg-hr-gradient rounded h-0.5 mb-6 mt-2"></div>
-                <p class="font-sans sm:text-lg w-full font-thin">
-                    {description}
-                </p>
+<div class="card max-w-screen-md text-white bg-gray-500 rounded-3xl bg-gray-800 bg-opacity-10 border-gray-800 border overflow-hidden backdrop-blur-lg">
+    <img class="w-full h-3/5 border-b border-gray-800 object-cover" src={project.screenshots[0].url}  alt={project.screenshots[0].alt} >
+    <div class="px-4 sm:px-8 py-4 h-2/5 sm:1/2 flex flex-col justify-around">
+        <div class="my-0 sm:my-4">
+            <h3 class="font-serif text-2xl sm:text-4xl">{project.title}</h3>
+            <div class="bg-hr-gradient rounded h-0.5 my-2"></div>
+        </div>
+        <div class="flex justify-between space-x-2 items-center flex-wrap">
+            <LinkButton route="/work/{project.title.toLowerCase()}" text="More" icon={IconBook}/>
+            <div class="flex justify-start align-middle gap-3 my-2">
+                <LinkIcon href={project.href}>
+                    <IconLink slot="icon" class="w-3/5 h-3/5 self-center text-dark-primary-text "/>
+                </LinkIcon>
+                <LinkIcon href={project.githubHref}>
+                    <IconBrandGithub slot="icon" class="w-3/5 h-3/5 self-center text-dark-primary-text "/>
+                </LinkIcon>
             </div>
-            <div class="flex justify-between space-x-2 items-center flex-wrap">
-                <LinkButton route="/work/{title.toLowerCase()}" text="More" icon={IconBook}/>
-                <div class="flex justify-start align-middle gap-3 my-2">
-                    <LinkIcon href={link}>
-                        <IconLink slot="icon" class="w-3/5 h-3/5 self-center text-dark-primary-text "/>
-                    </LinkIcon>
-                    <LinkIcon href={githubLink}>
-                        <IconBrandGithub slot="icon" class="w-3/5 h-3/5 self-center text-dark-primary-text "/>
-                    </LinkIcon>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>
 
 <style>
+    .card {
+        transition: all 100ms ease-in-out;
+        transform: scale(100%);
+        box-shadow: rgba(255, 255, 255,0) 12px 12px 12px;
+    }
+
+    .card:hover {
+        transition: all 300ms linear;
+        transform: scale(101%);
+        box-shadow: rgba(255, 255, 255, .05) 4px 4px 16px;
+    }
+
 </style>

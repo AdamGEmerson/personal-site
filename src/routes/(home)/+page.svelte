@@ -1,31 +1,31 @@
 <script>
-    import FeaturedWork from "../../components/FeaturedWork.svelte";
-    import HeroButton from "../../components/HeroButton.svelte";
     import { IconChevronDown } from "@tabler/icons-svelte";
-    import SocialLinks from "../../components/SocialLinks.svelte";
-    import illustration from "../../splash_illustration_edit.png"
+    import FeaturedWork from "/src/components/FeaturedWork.svelte";
+    import HeroButton from "/src/components/HeroButton.svelte";
+    import SocialLinks from "/src/components/SocialLinks.svelte";
     import {fade, fly} from "svelte/transition";
     import {quadInOut} from "svelte/easing";
     import {onMount} from "svelte";
 
+    export let data;
     let mounted = false;
+    let y = 0;
 
     onMount( () => {
       mounted = true;
     })
 
-    export let data;
-
-    let y = 0;
 </script>
 
 <div class="sm:m-8">
     {#if mounted}
     <div  class="absolute top-0 left-0 h-screen w-screen">
-        <img in:fade={{delay: 100, duration: 1000}} out:fade={{ duration: 200}}
+        <img in:fade={{delay: 100, duration: 500}} out:fade={{ duration: 200}}
                 class="w-fit px-4 md:h-4/5 mix-blend-color-dodge relative top-10 md:float-right md:pr-32 duration-1000 ease-linear {y < 150 ? 'opacity-40' : 'opacity-0'}"
-                src={illustration}
-                alt="Abstract Illustration of a programmer"/>
+                src={"images/home/splash_illustration_edit.png"}
+                alt="Abstract Illustration of a programmer"
+                loading="eager"
+        />
     </div>
     <div class="h-screen relative">
         <div class="flex flex-col justify-end content-center h-5/6 md:flex-row md:justify-between md:items-center">
