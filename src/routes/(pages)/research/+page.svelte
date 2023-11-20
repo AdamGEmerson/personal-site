@@ -1,0 +1,15 @@
+<script>
+    // import ProjectCard from "/src/components/ProjectCard.svelte";
+    // import { projects } from "/src/stores/pages";
+    //
+    // let pages;
+    // projects.subscribe(value => {
+    //     pages = value
+    // })
+</script>
+
+<div id="work" class="h-full w-full my-8 pb-32 flex flex-col">
+    <div class="grid grid-cols-1 sm:grid-cols-2 carousel-container gap-16">
+        Research
+    </div>
+</div>

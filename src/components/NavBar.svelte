@@ -1,5 +1,5 @@
 ``<script lang="ts">
-    import {IconCertificate2, IconCode, IconHome, IconMenu2, IconSun, IconX} from "@tabler/icons-svelte";
+  import {IconCertificate2, IconCode, IconHome, IconMenu2, IconMicroscope, IconSun, IconX} from "@tabler/icons-svelte";
     import {fly, slide} from "svelte/transition"
     import {quadOut} from "svelte/easing";
     import NavLink from "./NavLink.svelte";
@@ -8,8 +8,9 @@
 
     const links = [
         { name: 'Home', route: '/', icon: IconHome },
-        { name: 'Resume', route: '/resume', icon: IconCertificate2},
+        { name: 'Research', route: '/research', icon: IconMicroscope},
         { name: 'Work', route: '/work', icon: IconCode },
+        { name: 'CV', route: '/cv', icon: IconCertificate2}
     ]
 
     export let opened = false;

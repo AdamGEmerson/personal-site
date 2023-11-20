@@ -6,6 +6,7 @@
     import {fade, fly} from "svelte/transition";
     import {quadInOut} from "svelte/easing";
     import {onMount} from "svelte";
+    import Footer from "/src/components/Footer.svelte";
 
     import illustration from "/src/images/home/splash_illustration_edit.png";
 
@@ -43,7 +44,7 @@
                 </div>
                 <div in:fade={{ duration:500, easing:quadInOut}} out:fade={{duration:200}}>
                     <div in:fly={{delay:400, duration:500, y:10, easing:quadInOut}} out:fade={{duration:200}} >
-                        <HeroButton styles="my-12 w-full" text="RESUME" route="/resume"/>
+                        <HeroButton styles="my-12" text="CV" route="/cv"/>
                     </div>
                     <div in:fly={{delay:600, duration:500, y:10, easing:quadInOut}} out:fade={{duration:200}} >
                         <SocialLinks />
@@ -60,5 +61,6 @@
     {/if}
 </div>
 
+<Footer />
 
 <svelte:window bind:scrollY={y} />

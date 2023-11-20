@@ -1,5 +1,6 @@
 <script>
     import PageTitle from "../../components/PageTitle.svelte";
+    import Footer from "../../components/Footer.svelte";
     export let data;
 </script>
 

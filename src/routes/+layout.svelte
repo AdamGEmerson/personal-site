@@ -11,6 +11,6 @@
         <div class="md:px-8 xl:px-32">
             <slot></slot>
         </div>
-        <Footer />
     </div>
+    <Footer />
 </div>

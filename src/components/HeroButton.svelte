@@ -6,7 +6,7 @@
 
 <button class="theme-button {styles}  w-32 h-12 text-xl bg-gradient-to-br from-hero-blue to-hero-green font-sans font-bold text-theme-black drop-shadow-theme-button hover:drop-shadow-theme-button-hover"
         on:click={goto(route)}>
-    Resume
+    CV
 </button>
 
 <style>
