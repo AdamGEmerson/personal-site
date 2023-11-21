@@ -2,7 +2,7 @@
   import LinkButton from "../../../components/LinkButton.svelte";
   import LinkIcon from "../../../components/LinkIcon.svelte";
   import resumeImage from "../../../AdamEmerson_ResumeOct22.png";
-  import resumePDF from "../../../AdamEmerson_Resume.pdf";
+  import resumePDF from "../../../AdamEmerson_CV_Nov23.pdf";
   import {IconBook, IconBrandLinkedin, IconDownload} from "@tabler/icons-svelte";
 
 </script>
@@ -11,6 +11,7 @@
     <h1>Adam G. Emerson</h1>
     <h2>HCI Research & Software Development</h2>
     <LinkButton text="PDF" route={resumePDF} icon={IconDownload} />
+    <div class="text-sm italic my-4">Last Update: November 2023</div>
     <div class="cv-section" id="about">
         <h3>About</h3>
         <div class="flex flex-row w-full p-4">

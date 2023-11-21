@@ -14,7 +14,7 @@
             <div class="bg-hr-gradient rounded h-0.5 my-2"></div>
         </div>
         <div class="flex justify-between space-x-2 items-center flex-wrap">
-            <LinkButton route="/work/{project.title.toLowerCase()}" text="More" icon={IconBook}/>
+            <LinkButton route="{project.isResearch ? 'research' : 'projects'}/{project.title.toLowerCase()}" text="More" icon={IconBook}/>
 
             <div class="flex justify-start align-middle gap-3 my-2">
                 {#if project.href}

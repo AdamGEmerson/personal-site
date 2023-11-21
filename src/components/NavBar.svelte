@@ -9,7 +9,7 @@
     const links = [
         { name: 'Home', route: '/', icon: IconHome },
         { name: 'Research', route: '/research', icon: IconMicroscope},
-        { name: 'Work', route: '/work', icon: IconCode },
+        { name: 'Projects', route: '/projects', icon: IconCode },
         { name: 'CV', route: '/cv', icon: IconCertificate2}
     ]
 

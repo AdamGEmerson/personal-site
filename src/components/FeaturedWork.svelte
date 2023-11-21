@@ -2,8 +2,8 @@
     import ProjectCard from "./ProjectCard.svelte";
     import auragraph from "../images/auragraph/auragraphPreview.png"
     import universe from "../images/universe/universePreview.png"
-    import asketch from "../images/asketch/asketchPreview.png"
-    import { projects } from "/src/stores/pages";
+    import asketch from "../images/crucible/asketchPreview.png"
+    import { projects } from "/src/stores/featured";
     import {onMount} from "svelte";
 
     let pages;
@@ -13,7 +13,7 @@
 
     let index = 0;
 
-    onMount( () => console.log(pages))
+    // onMount( () => console.log(pages))
 
 </script>
 
