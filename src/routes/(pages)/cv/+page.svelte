@@ -2,7 +2,6 @@
   import LinkButton from "../../../components/LinkButton.svelte";
   import resumePDF from "../../../AdamEmerson_CV_Nov23.pdf";
   import { IconDownload } from "@tabler/icons-svelte";
-
 </script>
 
 <div class="w-full z-50">
