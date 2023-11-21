@@ -17,7 +17,6 @@
     onMount( () => {
       mounted = true;
     })
-
 </script>
 
 <div class="sm:m-8">
@@ -57,10 +56,7 @@
             <IconChevronDown class='transition-opacity duration-500 ease-in-out' style="opacity: {y > 50 ? '0' : '1'}"/>
         </div>
     </div>
-    <FeaturedWork />
+        <FeaturedWork y={y} />
     {/if}
 </div>
-
-<Footer />
-
-<svelte:window bind:scrollY={y} />
+<svelte:window bind:scrollY={y}/>

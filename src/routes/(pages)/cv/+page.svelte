@@ -7,7 +7,7 @@
 
 </script>
 
-<div class="h-screen w-full z-50">
+<div class="w-full z-50">
     <h1>Adam G. Emerson</h1>
     <h2>HCI Research & Software Development</h2>
     <LinkButton text="PDF" route={resumePDF} icon={IconDownload} />
@@ -224,7 +224,4 @@
     .entry-dates {
         @apply mr-8 w-2/12;
     }
-
-
-
 </style>
