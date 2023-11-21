@@ -40,7 +40,7 @@ export const projects = writable({
         authors: ['Adam G. Emerson', 'Allison Sullivan'],
         href: null,
         githubHref: 'https://github.com/Crucible-Alloy/Crucible',
-        description: 'Crucible is a no-code solution that lets users build AUnit tests for the software modelling language Alloy. Crucible was published at ISSRE \'23.',
+        description: 'Alloy is a declarative modeling language that is well suited for verifying system designs. Alloy models are automatically analyzed using the Analyzer, a toolset that helps the user understand their system by displaying the consequences of their properties, helping identify any missing or incorrect properties, and exploring the impact of modifications to those properties. To achieve this, the Analyzer invokes off-the-shelf SAT solvers to search for scenarios, which are assignments to the sets and relations of the model such that all executed formulas hold. To help write more accurate software models, Alloy has a unit testing framework, AUnit, which allows users to outline specific scenarios and check if those scenarios are correctly generated or prevented by their model. Unfortunately, AUnit currently only supports textual specifications of scenarios. This paper introduces Crucible, which allows users to graphically create AUnit test cases. In addition, Crucible provides automated guidance to users to ensure they are creating well structured, valuable test cases. As a result, Crucible eases the burden of adopting AUnit and brings AUnit test case creation more in line with how Alloy scenarios are commonly interacted with, which is graphically.',
         madeWith: [
             {name: 'Typescript', icon: IconBrandTypescript},
             {name: 'React', icon: IconBrandReact},

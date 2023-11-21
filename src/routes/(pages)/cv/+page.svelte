@@ -1,9 +1,7 @@
 <script>
   import LinkButton from "../../../components/LinkButton.svelte";
-  import LinkIcon from "../../../components/LinkIcon.svelte";
-  import resumeImage from "../../../AdamEmerson_ResumeOct22.png";
   import resumePDF from "../../../AdamEmerson_CV_Nov23.pdf";
-  import {IconBook, IconBrandLinkedin, IconDownload} from "@tabler/icons-svelte";
+  import { IconDownload } from "@tabler/icons-svelte";
 
 </script>
 
@@ -222,6 +220,6 @@
         @apply my-8;
     }
     .entry-dates {
-        @apply mr-8 w-2/12;
+        @apply mr-8 w-2/12 text-sm;
     }
 </style>

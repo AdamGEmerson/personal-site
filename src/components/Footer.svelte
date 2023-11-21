@@ -6,7 +6,7 @@
 </script>
 
 <div class="text-sm w-full p-16 text-white z-10 relative flex justify-between items-center">
-    <div class="h-full ">
+    <div class="h-full text-xs md:text-sm">
         <div>Adam G. Emerson</div>
         <div>© {year}</div>
     </div>
