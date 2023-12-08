@@ -10,7 +10,6 @@
 	import illustration from '/src/images/home/splash_illustration_edit.png';
 	import ogImage from '/src/images/adamemerson_og.png';
 
-	export let data;
 	let mounted = false;
 	let y = 0;
 
@@ -59,10 +58,11 @@
 				<div class="w-4/5 md:w-1/2 md:h-4/5 justify-self-end">
 					<div in:fade={{ duration: 500, easing: quadInOut }} out:fade={{ duration: 200 }}>
 						<div in:fly={{ delay: 100, duration: 800, y: 10, easing: quadInOut }}>
-							<h1 class="jumbotron drop-shadow-theme-button-hover">{data.info.name}</h1>
-							<h2>{data.info.title}</h2>
+							<h1 class="jumbotron drop-shadow-theme-button-hover">Adam G. Emerson</h1>
+							<h2>HCI Research and Web Development</h2>
 							<p class="font-sans font-thin text-dark-primary-text md:text-xl">
-								{data.info.description}
+								3+ years of experience in full-stack web, desktop, and mobile application
+								development.
 							</p>
 						</div>
 					</div>
