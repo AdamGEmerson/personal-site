@@ -23,6 +23,7 @@
 		property="og:description"
 		content="Software Engineering and Web Development Projects by Adam G. Emerson"
 	/>
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <div id="work" class="h-full w-full my-8 pb-32 flex flex-col">

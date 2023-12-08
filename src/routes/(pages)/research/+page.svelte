@@ -17,6 +17,7 @@
 	<meta property="og:image" content={ogImage} />
 	<meta property="og:url" content="https://adamemerson.com/research" />
 	<meta property="og:description" content="Research Projects and Papers by Adam G. Emerson" />
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <div id="work" class="h-full w-full my-8 pb-32 flex flex-col">

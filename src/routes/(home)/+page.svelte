@@ -34,6 +34,7 @@
 		property="og:description"
 		content="Adam G. Emerson - Software Engineering and HCI Research Portfolio"
 	/>
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <div class="sm:m-8">

@@ -14,6 +14,7 @@
 	<meta property="og:image" content={ogImage} />
 	<meta property="og:url" content="https://adamemerson.com/cv" />
 	<meta property="og:description" content="Adam G Emerson's CV and Resume" />
+	<meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
 
 <div class="w-full z-50">
