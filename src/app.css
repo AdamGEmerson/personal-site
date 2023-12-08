@@ -55,6 +55,9 @@
     h3 {
         @apply font-sans text-lg mb-4 font-bold text-dark-primary-text md:text-2xl;
     }
+    h2 {
+        @apply font-sans text-lg mb-4 font-bold text-dark-primary-text md:text-2xl;
+    }
 }
 
 @layer components {

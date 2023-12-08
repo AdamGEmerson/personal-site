@@ -1,7 +1,6 @@
 <script>
     import {page} from "$app/stores"
     import { projects } from "/src/stores/featured"
-    import LinkIcon from "../../../../components/LinkIcon.svelte";
     import {IconBrandGithub, IconLink} from "@tabler/icons-svelte";
     let pages;
 
@@ -76,10 +75,10 @@
 </div>
 <h3 class="font-sans font-bold text-lg mt-12">Images</h3>
 
-<div class="flex flex flex-col space-y-8 items-center w-full p-4 h-full">
+<div class="flex flex-col space-y-8 items-center w-full p-4 h-full">
     {#each project.screenshots as pic, i (i)}
         {#if i > 0}
-            <img src={pic.url} alt={pic.alt} style="object-fit: fit" class="h-1/3 w-full rounded-3xl overflow-hidden border border-gray-800"/>
+            <img src={pic.url} alt={pic.alt} class="h-1/3 w-full rounded-3xl overflow-hidden border border-gray-800 object-fill"/>
         {/if}
     {/each}
 </div>

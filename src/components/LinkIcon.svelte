@@ -1,5 +1,6 @@
 <script>
     export let href;
+    export let label;
 </script>
 
 <div class="h-8 w-8 sm:h-12 sm:w-12">
@@ -8,6 +9,7 @@
         href={href}
         target="_blank"
         rel="noreferrer"
+        aria-label={label}
     >
         <slot name="icon" />
     </a>
