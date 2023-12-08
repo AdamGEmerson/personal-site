@@ -27,7 +27,7 @@
 	<link rel="canonical" href="https://adamemerson.com" />
 	<meta property="og:title" content="Adam G. Emerson" />
 	<meta property="og:type" content="website" />
-	<meta property="og:image" content={ogImage + '?twitter-cache-reset'} />
+	<meta property="og:image" content={ogImage} />
 	<meta property="og:url" content="https://adamemerson.com" />
 	<meta
 		property="og:description"
