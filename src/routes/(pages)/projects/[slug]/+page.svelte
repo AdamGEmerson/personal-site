@@ -1,21 +1,24 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 	import { projects } from '/src/stores/featured';
 	import { IconBrandGithub, IconLink } from '@tabler/icons-svelte';
+	import type { Project } from '/src/stores/featured';
 	let pages;
 
 	projects.subscribe((value) => {
 		pages = value;
 	});
 
-	let project = pages[$page.params.slug];
+	let project: Project = pages[$page.params.slug];
 </script>
 
 <svelte:head>
-	<title>{project.name} | Adam G. Emerson</title>
+	<title>{project.title} | Adam G. Emerson</title>
 	<meta
 		name="description"
-		content={project.description.slice(0, 300) + project.description.length > 300 ? '...' : ''}
+		content={project.description.length > 150
+			? project.description.slice(0, 150) + '...'
+			: project.description.slice(0, 150)}
 	/>
 </svelte:head>
 
