@@ -2,6 +2,7 @@
 	import LinkButton from '../../../components/LinkButton.svelte';
 	import resumePDF from '/src/AdamEmerson_CV_Nov23.pdf';
 	import { IconDownload } from '@tabler/icons-svelte';
+	import ogImage from '/src/images/adamemerson_og.png';
 </script>
 
 <svelte:head>
@@ -10,7 +11,7 @@
 	<link rel="canonical" href="https://adamemerson.com/cv" />
 	<meta property="og:title" content="CV | Adam G. Emerson" />
 	<meta property="og:type" content="website" />
-	<meta property="og:image" content="/src/images/adamemerson_og.png" />
+	<meta property="og:image" content={ogImage} />
 	<meta property="og:url" content="https://adamemerson.com/cv" />
 	<meta property="og:description" content="Adam G Emerson's CV and Resume" />
 </svelte:head>

@@ -1,7 +1,7 @@
 <script>
 	import ProjectCard from '/src/components/ProjectCard.svelte';
 	import { projects } from '/src/stores/featured';
-
+	import ogImage from '/src/images/adamemerson_og.png';
 	let pages;
 	projects.subscribe((value) => {
 		pages = value;
@@ -14,7 +14,7 @@
 	<link rel="canonical" href="https://adamemerson.com/research" />
 	<meta property="og:title" content="Research | Adam G. Emerson" />
 	<meta property="og:type" content="website" />
-	<meta property="og:image" content="/src/images/adamemerson_og.png" />
+	<meta property="og:image" content={ogImage} />
 	<meta property="og:url" content="https://adamemerson.com/research" />
 	<meta property="og:description" content="Research Projects and Papers by Adam G. Emerson" />
 </svelte:head>
