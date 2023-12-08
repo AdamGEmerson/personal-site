@@ -15,6 +15,11 @@
 	<meta property="og:url" content="https://adamemerson.com/cv" />
 	<meta property="og:description" content="Adam G Emerson's CV and Resume" />
 	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@adamgemerson" />
+	<meta name="twitter:creator" content="@adamgemerson" />
+	<meta name="twitter:title" content="CV | Adam G. Emerson" />
+	<meta name="twitter:description" content="Software Engineering and Web Development Portfolio" />
 </svelte:head>
 
 <div class="w-full z-50">

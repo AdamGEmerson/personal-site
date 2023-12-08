@@ -24,6 +24,10 @@
 		content="Software Engineering and Web Development Projects by Adam G. Emerson"
 	/>
 	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@adamgemerson" />
+	<meta name="twitter:creator" content="@adamgemerson" />
+	<meta name="twitter:title" content="Projects | Adam G. Emerson" />
+	<meta name="twitter:description" content="Software Engineering and Web Development Portfolio" />
 </svelte:head>
 
 <div id="work" class="h-full w-full my-8 pb-32 flex flex-col">

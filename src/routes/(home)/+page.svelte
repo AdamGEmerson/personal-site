@@ -34,6 +34,10 @@
 		content="Adam G. Emerson - Software Engineering and HCI Research Portfolio"
 	/>
 	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@adamgemerson" />
+	<meta name="twitter:creator" content="@adamgemerson" />
+	<meta name="twitter:title" content="Adam G. Emerson" />
+	<meta name="twitter:description" content="Software Engineering and Web Development Portfolio" />
 </svelte:head>
 
 <div class="sm:m-8">

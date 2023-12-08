@@ -18,6 +18,10 @@
 	<meta property="og:url" content="https://adamemerson.com/research" />
 	<meta property="og:description" content="Research Projects and Papers by Adam G. Emerson" />
 	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@adamgemerson" />
+	<meta name="twitter:creator" content="@adamgemerson" />
+	<meta name="twitter:title" content="Research | Adam G. Emerson" />
+	<meta name="twitter:description" content="Software Engineering and Web Development Portfolio" />
 </svelte:head>
 
 <div id="work" class="h-full w-full my-8 pb-32 flex flex-col">
