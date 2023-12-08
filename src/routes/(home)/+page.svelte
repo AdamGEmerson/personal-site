@@ -8,6 +8,7 @@
 	import { onMount } from 'svelte';
 
 	import illustration from '/src/images/home/splash_illustration_edit.png';
+	import ogImage from '/src/images/adamemerson_og.png';
 
 	export let data;
 	let mounted = false;
@@ -27,7 +28,7 @@
 	<link rel="canonical" href="https://adamemerson.com" />
 	<meta property="og:title" content="Adam G. Emerson" />
 	<meta property="og:type" content="website" />
-	<meta property="og:image" content="/src/images/adamemerson_og.png" />
+	<meta property="og:image" content={ogImage} />
 	<meta property="og:url" content="https://adamemerson.com" />
 	<meta
 		property="og:description"
