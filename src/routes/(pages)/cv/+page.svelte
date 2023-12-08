@@ -1,8 +1,13 @@
 <script>
   import LinkButton from "../../../components/LinkButton.svelte";
-  import resumePDF from "../../../AdamEmerson_CV_Nov23.pdf";
+  import resumePDF from "/src/AdamEmerson_CV_Nov23.pdf";
   import { IconDownload } from "@tabler/icons-svelte";
 </script>
+
+<svelte:head>
+    <title>CV | dam G. Emerson</title>
+    <meta name="description" content="Adam G Emerson's CV and Resume" />
+</svelte:head>
 
 <div class="w-full z-50">
     <h1>Adam G. Emerson</h1>
@@ -12,7 +17,7 @@
     <div class="cv-section" id="about">
         <h3>About</h3>
         <div class="flex flex-row w-full p-4">
-            <p>An experienced web developer with a background in design and film production. Currently researching Human Computer Interaction with a focus on leveraging AI technologies to support, rather than displace, creative professionals.</p>
+            <p>An experienced web developer with a background in design and film production. Currently researching Human Computer Interaction with a focus on Human-AI collaboration and creativity support for visual artists.</p>
         </div>
     </div>
     <div class="cv-section" id="education">
@@ -175,14 +180,14 @@
             <div class="entry-dates">2023 - Present</div>
             <div class="flex flex-col">
                 <div class="font-bold">IT Consultation and Software Support</div>
-                <div class="italic">East Texas Foodbank - Tyler, TX</div>
+                <div class="italic">East Texas Food Bank - Tyler, TX</div>
             </div>
         </div>
         <div class="flex flex-row w-full p-4">
             <div class="entry-dates">2022 - 2023</div>
             <div class="flex flex-col">
                 <div class="font-bold">IT Consultation and Software Support</div>
-                <div class="italic">Midwest Foodbank - Fort Worth, TX</div>
+                <div class="italic">Midwest Food Bank - Fort Worth, TX</div>
             </div>
         </div>
     </div>

@@ -26,7 +26,30 @@ import cruciblePredicates from "/src/images/crucible/cruciblePredicates.png"
 import bridgeItTitle from "/src/images/bridgeIt/bridgeItPreview.png"
 import bridgeItFigure from "/src/images/bridgeIt/bridgeItFigure.png"
 import bridgeItPoster from "/src/images/bridgeIt/bridgeItPoster.png"
+import type {SvelteComponentTyped} from "svelte";
 
+export interface Project {
+    slug: string
+    title: string
+    isResearch: boolean
+    featured: boolean
+    paperTitle?: string
+    paperLink?: string
+    conference?: string
+    authors?: string[]
+    href?: string | null
+    githubHref: string | null
+    description: string
+    madeWith: {
+        name: string;
+        icon: any;
+    }[]
+    screenshots: {
+       alt: string
+       url: string
+    }[]
+    updated: string
+}
 
 export const projects = writable({
     crucible: {
@@ -54,6 +77,7 @@ export const projects = writable({
             {alt: 'Creating a new test in Crucible', url: crucibleNewTest},
             {alt: 'Asserting predicates in Crucible', url: cruciblePredicates},
         ],
+        updated: '2023-12-07',
     },
     bridgeit: {
         slug: 'bridgeit',
@@ -78,6 +102,7 @@ export const projects = writable({
             {alt: 'BridgeIt Poster', url: bridgeItPoster},
             {alt: 'BridgeIt Figure', url: bridgeItFigure},
         ],
+        updated: '2023-12-07',
     },
     auragraph: {
         slug: 'auragraph',
@@ -101,6 +126,7 @@ export const projects = writable({
             {alt: 'Auragraph Explore Page', url: auragraphExplore},
             {alt: 'Auragraph Home Page', url: auragraphHome},
         ],
+        updated: '2023-12-07',
     },
     universe: {
         slug: 'universe',
@@ -120,5 +146,6 @@ export const projects = writable({
             {alt: 'UniVerse Splash Screen', url: universeSplash},
             {alt: 'UniVerse Mockups', url: universeMocks},
         ],
+        updated: '2023-12-07',
     },
 })

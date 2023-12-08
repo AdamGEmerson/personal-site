@@ -1,7 +1,36 @@
 <script>
   import "../app.css";
+  import { onMount } from "svelte";
+  import posthog from "posthog-js";
+  import { page } from "$app/stores"
   import Footer from "../components/Footer.svelte";
   import NavBar from "../components/NavBar.svelte";
+
+  let currentPath = '';
+
+  onMount(() => {
+      if (typeof window !== 'undefined') {
+          const unsubscribePage = page.subscribe(($page) => {
+              if (currentPath && currentPath !== $page.url.pathname) {
+                  console.log('leaving')
+                  posthog.capture('$pageleave');
+              }
+              console.log('entering')
+              currentPath = $page.url.pathname;
+              posthog.capture('$pageview');
+          });
+
+          const handleBeforeUnload = () => {
+              posthog.capture('$pageleave');
+          };
+          window.addEventListener('beforeunload', handleBeforeUnload);
+
+          return () => {
+              unsubscribePage();
+              window.removeEventListener('beforeunload', handleBeforeUnload);
+          };
+      }
+  });
 </script>
 
 <div class="h-full min-h-screen bg-theme-black">

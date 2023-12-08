@@ -8,6 +8,12 @@
   })
 </script>
 
+<svelte:head>
+    <title>Projects | Adam G. Emerson</title>
+    <meta name="description" content="Software Engineering and Web Development Projects by Adam G. Emerson" />
+</svelte:head>
+
+
 <div id="work" class="h-full w-full my-8 pb-32 flex flex-col">
     <div class="grid grid-cols-1 sm:grid-cols-2 carousel-container gap-16">
         {#each Object.entries(pages) as [slug, project], i}

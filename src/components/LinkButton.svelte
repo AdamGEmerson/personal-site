@@ -1,5 +1,6 @@
 <script lang="ts">
     import { goto } from '$app/navigation';
+    import {SvelteComponentTyped} from "svelte";
     export let route: string | URL;
     export let text;
     export let icon=null;

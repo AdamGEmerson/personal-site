@@ -35,4 +35,9 @@ npm run build
 
 You can preview the production build with `npm run preview`.
 
+## Analytics
+
+I've added analytics with [Posthog](https://posthog.com). A key, `POSTHOG_KEY` will need to be added to a `.env.local` file for them to work correctly. The key can also be added to the environment variables in vercel.
+
+
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

@@ -6,7 +6,6 @@
     import {fade, fly} from "svelte/transition";
     import {quadInOut} from "svelte/easing";
     import {onMount} from "svelte";
-    import Footer from "/src/components/Footer.svelte";
 
     import illustration from "/src/images/home/splash_illustration_edit.png";
 
@@ -18,6 +17,11 @@
       mounted = true;
     })
 </script>
+
+<svelte:head>
+    <title>Adam G. Emerson</title>
+    <meta name="description" content="Adam G. Emerson - Software Engineering and HCI Research Portfolio" />
+</svelte:head>
 
 <div class="sm:m-8">
     {#if mounted}
