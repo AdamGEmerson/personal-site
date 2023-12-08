@@ -13,7 +13,8 @@
 
 	const dispatch = createEventDispatcher();
 
-	function handleClick() {
+	function handleClick(e) {
+		e.preventDefault();
 		activeLink = index;
 		dispatch('closeNav');
 		goto(route);
@@ -28,23 +29,24 @@
 	}
 </script>
 
-<button
+<div
 	data-sveltekit-preload-data
 	class="relative w-5/6 hover:cursor-pointer {activeLink === index ? 'disabled' : ''}"
 	on:mouseenter={handleOnMouseEnter}
 	on:mouseleave={handleOnMouseExit}
 	aria-label="{name} Page"
 >
-	<div
+	<a
 		class="flex flex-col items-center justify-around font-normal justify-items-center m-auto p-4 {activeLink ===
 		index
 			? 'rounded-full bg-opacity-10'
 			: 'rounded-3xl bg-opacity-0 hover:bg-opacity-20'} bg-gray-500"
 		on:click={handleClick}
 		on:keypress={handleClick}
+		href={route}
 	>
 		<svelte:component this={icon} />
-	</div>
+	</a>
 	{#if toolTip}
 		<div
 			transition:fly={{ duration: 200, x: -40 }}
@@ -55,4 +57,4 @@
 			</div>
 		</div>
 	{/if}
-</button>
+</div>

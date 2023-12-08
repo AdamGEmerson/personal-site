@@ -7,6 +7,12 @@
 <svelte:head>
 	<title>CV | Adam G. Emerson</title>
 	<meta name="description" content="Adam G Emerson's CV and Resume" />
+	<link rel="canonical" href="https://adamemerson.com/cv" />
+	<meta property="og:title" content="CV | Adam G. Emerson" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="/src/images/adamemerson_og.png" />
+	<meta property="og:url" content="https://adamemerson.com/cv" />
+	<meta property="og:description" content="Adam G Emerson's CV and Resume" />
 </svelte:head>
 
 <div class="w-full z-50">
