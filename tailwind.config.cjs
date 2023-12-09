@@ -4,8 +4,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'serif': ["Swomun Serif", 'Times New Roman', 'sans-serif'],
-        'sans': ['Nexa', 'Helvetica', 'Verdana', 'sans-serif'],
+        'serif': ["Alliance and Data", "Swomun Serif", 'Times New Roman', 'serif'],
+        'sans': [ 'Nexa', 'Helvetica', 'Verdana', 'sans-serif'],
+        'mono': ['Andale Mono', 'monospace']
       },
       colors: {
         'hero-blue': "#1A91FF",
@@ -30,6 +31,20 @@ module.exports = {
       dropShadow: {
         'theme-button': '0px 0px 6px rgba(255, 255, 255, 0.10)',
         'theme-button-hover': '0px 0px 8px rgba(255, 255, 255, 0.25'
+      },
+      animation: {
+        marquee: 'marquee 25s linear infinite',
+        marquee2: 'marquee2 25s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        marquee2: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
       },
     },
     plugins: [],

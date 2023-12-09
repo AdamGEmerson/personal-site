@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import ProjectCard from '/src/components/ProjectCard.svelte';
 	import { projects } from '/src/stores/featured';
 	import ogImage from '/src/images/adamemerson_og.png';

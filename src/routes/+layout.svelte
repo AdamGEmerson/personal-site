@@ -4,7 +4,6 @@
 	import posthog from 'posthog-js';
 	import { page } from '$app/stores';
 	import Footer from '../components/Footer.svelte';
-	import NavBar from '../components/NavBar.svelte';
 
 	let currentPath = '';
 
@@ -31,13 +30,11 @@
 	});
 </script>
 
-<div class="h-full min-h-screen bg-theme-black">
-	<div class="fixed top-0 left-0 h-screen w-screen bg-hero-gradient" />
-	<div class="text-white p-16 z-0">
-		<NavBar />
-		<div class="md:px-8 xl:px-32">
-			<slot />
-		</div>
+<div class="h-screen min-h-screen bg-stone-300">
+	<div class="text-stone-900 p-16 h-5/6">
+		<slot />
+	</div>
+	<div class="h-1/6">
+		<Footer />
 	</div>
 </div>
-<Footer />

@@ -3,17 +3,17 @@
 	import { createEventDispatcher } from 'svelte';
 	import { fly } from 'svelte/transition';
 
-	export let route;
-	export let name;
-	export let index;
-	export let icon;
-	export let activeLink;
+	export let route: string;
+	export let name: string;
+	export let index: number;
+	export let icon: any;
+	export let activeLink: number;
 
-	export let toolTip;
+	let toolTip: boolean;
 
 	const dispatch = createEventDispatcher();
 
-	function handleClick(e) {
+	function handleClick(e: Event) {
 		e.preventDefault();
 		activeLink = index;
 		dispatch('closeNav');

@@ -32,7 +32,7 @@
 	}
 </script>
 
-``{#if opened}
+{#if opened}
 	<div
 		transition:fly={{ duration: 400, x: -24, easing: quadOut }}
 		class="fixed flex flex-col items-center space-y-1 justify-start top-0 left-0 z-40 h-screen w-20 transition-transform duration-500 ease-in-out bg-black sm:bg-transparent bg-opacity-80 backdrop-blur-sm border-r border-gray-800"
@@ -55,9 +55,7 @@
 	<div
 		transition:slide={{ duration: 400, easing: quadOut }}
 		class="fixed top-0 left-0 z-40 px-8 py-4 w-screen h-16 flex justify-between transition-all border-gray-800 duration-300 {y >
-		40
-			? 'bg-black bg-opacity-30 backdrop-blur-sm border-gray-800 border-b'
-			: ''}"
+			40 && 'bg-black bg-opacity-30 backdrop-blur-sm border-gray-800 border-b'}"
 	>
 		<button on:click={handleOpenNav} aria-label="Open Navigation Bar">
 			<IconMenu2 />
@@ -66,7 +64,7 @@
 	</div>
 {/if}
 
-<svelte:window bind:scrollY={y} />``
+<svelte:window bind:scrollY={y} />
 
 <style>
 </style>
