@@ -32,7 +32,7 @@ import cruciblePredicates from '/src/images/crucible/cruciblePredicates.png';
 import bridgeItTitle from '/src/images/bridgeIt/bridgeItPreview.png';
 import bridgeItFigure from '/src/images/bridgeIt/bridgeItFigure.png';
 import bridgeItPoster from '/src/images/bridgeIt/bridgeItPoster.png';
-import type { SvelteComponentTyped } from 'svelte';
+import type { SvelteComponent } from 'svelte';
 
 export interface Project {
 	slug: string;
