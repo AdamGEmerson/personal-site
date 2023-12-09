@@ -6,7 +6,7 @@
 </script>
 
 <div
-	class="text-sm text-stone-500 w-full p-8 relative flex justify-between h-full items-end bg-stone-300"
+	class="text-sm text-stone-500 w-full p-8 relative flex justify-between h-full w-full items-end"
 >
 	<div class="text-xs md:text-sm font-mono">
 		Made with <a class="hover:underline" href="https://kit.svelte.dev/">SvelteKit</a> and ❤
@@ -16,7 +16,7 @@
 	</div>
 
 	<div class="flex justify-start gap-6">
-		<LinkIcon href="/adamgemerson" label="GitHub Link">
+		<LinkIcon href="https://github.com/adamgemerson" label="GitHub Link">
 			<IconBrandGithub slot="icon" class="w-3/5 h-3/5 self-center text-stone-900" />
 		</LinkIcon>
 		<LinkIcon href="https://dribbble.com/adamgemerson" label="Dribbble Link">

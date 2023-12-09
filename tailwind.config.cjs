@@ -23,7 +23,8 @@ module.exports = {
         'menu-radial': 'radial-gradient(220.89% 90.64% at 4.38% 0%, #02192F 0%, #000103 100%)',
         'hero-gradient': 'radial-gradient(192.77% 78.62% at 0% 0%, #02192F 0%, #000103 100%)',
         'hr-gradient': 'linear-gradient(90deg, rgba(26,145,255,.9) 0%, rgba(20,233,131,.6) 40%, rgba(20,233,131,0) 100%)',
-        'carousel-gradient': 'linear-gradient(90deg, rgba(255,255,255, 1) 0%, rgba(255,255,255, 1) 66%, rgba(20,233,131,0) 100%)'
+        'carousel-gradient': 'linear-gradient(90deg, rgba(255,255,255, 1) 0%, rgba(255,255,255, 1) 66%, rgba(20,233,131,0) 100%)',
+        'mesh-gradient': 'radial-gradient(at 79% 38%, hsla(0,100%,88%,1) 0px, transparent 50%), radial-gradient(at 100% 70%, hsla(198,100%,77%,1) 0px, transparent 50%), radial-gradient(at 15% 86%, hsla(57,100%,85%,1) 0px, transparent 50%), radial-gradient(at 60% 81%, hsla(165,100%,77%,1) 0px, transparent 50%);'
       },
       borderRadius: {
         'quirky': "36px 24px 43px 64px",

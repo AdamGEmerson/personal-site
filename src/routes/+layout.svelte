@@ -30,11 +30,11 @@
 	});
 </script>
 
-<div class="h-screen min-h-screen bg-stone-300">
-	<div class="text-stone-900 p-16 h-5/6">
+<div class="absolute h-screen w-screen">
+	<div class="relative text-stone-900 p-16 h-5/6">
 		<slot />
 	</div>
-	<div class="h-1/6">
+	<div class="relative h-1/6">
 		<Footer />
 	</div>
 </div>
