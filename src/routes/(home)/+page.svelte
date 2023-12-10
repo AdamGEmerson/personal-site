@@ -5,14 +5,13 @@
 	import { cubicInOut } from 'svelte/easing';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import { draggable } from '@neodrag/svelte';
-	import { animate, spring } from 'motion';
+	import PlayingCard from '../../components/PlayingCard.svelte';
+	import { cards } from '../../stores/cards';
 
 	let title = 'Adam G. Emerson';
 	let typedTitle = '';
 	let index = 0;
 	let isTyping = false;
-	let position = { x: 0, y: 0 };
 	let typeWriter: NodeJS.Timeout; // eslint-disable-line no-undef
 	const typing = () => (typeWriter = setInterval(typeChar, 100));
 	const stopTyping = () => clearInterval(typeWriter);
@@ -33,6 +32,12 @@
 		goto(page);
 	}
 
+	function getRandomInt(min: number, max: number) {
+		min = Math.ceil(min);
+		max = Math.floor(max);
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
 	let hoveredLink = '';
 	function handleLinkHover(event: Event, link: string) {
 		event.preventDefault();
@@ -45,43 +50,12 @@
 	onMount(() => {
 		mounted = true;
 		typing();
-		animate(
-			'#card',
-			{
-				scale: [1.2, 1],
-				rotate: [15],
-				y: [600, 210]
-			},
-			{ duration: 0.4, delay: 1.5, easing: spring({ stiffness: 40, damping: 12 }) }
-		);
-		animate(
-			'#card-2',
-			{
-				scale: [1.2, 1],
-				rotate: [-10],
-				x: 40,
-				y: [600, 200]
-			},
-			{ duration: 0.4, delay: 1.5, easing: spring({ stiffness: 40, damping: 12 }) }
-		);
-		animate(
-			'#card-3',
-			{
-				scale: [1.2, 1],
-				rotate: [36],
-				x: 100,
-				y: [600, 190]
-			},
-			{ duration: 0.4, delay: 1.5, easing: spring({ stiffness: 40, damping: 15 }) }
-		);
 	});
 
-	const handleCardHover = () => {
-		animate('#card', {
-			rotate: [15]
-		});
-	};
-	let cardPos = { x: 0, y: 0 };
+	let deck: Card[];
+	cards.subscribe((value) => {
+		deck = value.faceCards;
+	});
 </script>
 
 <svelte:head>
@@ -141,7 +115,7 @@
 				<div
 					transition:blur={{ delay: 400, duration: 1000 }}
 					role="button"
-					tabindex={1}
+					tabindex={0}
 					class="text-lg sm:text-xl font-mono group hover:bg-stone-900 p-1 px-2 hover:cursor-pointer"
 					on:click={(e) => goTo(e, '/research')}
 					on:keypress={(e) => goTo(e, '/research')}
@@ -151,7 +125,7 @@
 				<div
 					transition:blur={{ delay: 600, duration: 1000 }}
 					role="button"
-					tabindex={2}
+					tabindex={0}
 					class="text-lg sm:text-xl font-mono group hover:bg-stone-900 p-1 px-2 hover:cursor-pointer"
 					on:click={(e) => goTo(e, '/cv')}
 					on:keypress={(e) => goTo(e, '/cv')}
@@ -163,56 +137,15 @@
 	</div>
 </div>
 
-<div
-	role="complementary"
-	id="card"
-	use:draggable={{
-		onDrag: ({ offsetX, offsetY }) => {
-			animate('#card', { x: offsetX, y: offsetY });
-		}
-	}}
-	on:mouseenter={() =>
-		animate(
-			'#card',
-			{ scale: 1.05, zIndex: 50, rotate: 0 },
-			{ easing: spring({ stiffness: 200, damping: 14 }) }
-		)}
-	on:mouseleave={() => animate('#card', { scale: 1, zIndex: 20 })}
-	class="absolute w-48 h-72 md:w-64 md:h-96 bg-indigo-400 rounded-2xl shadow-lg z-20 hover:cursor-grab"
-/>
-<div
-	role="complementary"
-	id="card-2"
-	use:draggable={{
-		onDrag: ({ offsetX, offsetY }) => {
-			animate('#card-2', { x: offsetX, y: offsetY });
-		}
-	}}
-	on:mouseenter={() =>
-		animate(
-			'#card-2',
-			{ scale: 1.05, zIndex: 50, rotate: 0 },
-			{ easing: spring({ stiffness: 200, damping: 14 }) }
-		)}
-	on:mouseleave={() => animate('#card-2', { scale: 1, zIndex: 20 })}
-	class="absolute w-48 h-72 md:w-64 md:h-96 bg-amber-400 rounded-2xl shadow-lg z-20 hover:cursor-grab"
-/>
-<div
-	role="complementary"
-	id="card-3"
-	use:draggable={{
-		onDrag: ({ offsetX, offsetY }) => {
-			animate('#card-3', { x: offsetX, y: offsetY });
-		}
-	}}
-	on:mouseenter={() =>
-		animate(
-			'#card-3',
-			{ scale: 1.05, zIndex: 50, rotate: 0 },
-			{ easing: spring({ stiffness: 200, damping: 14 }) }
-		)}
-	on:mouseleave={() => animate('#card-3', { scale: 1, zIndex: 20 })}
-	class="absolute w-48 h-72 md:w-64 md:h-96 bg-teal-400 rounded-2xl shadow-lg z-20 hover:cursor-grab"
-/>
+{#if mounted}
+	{#each deck as card, i}
+		<PlayingCard
+			{card}
+			id="card-{i}"
+			rotation={getRandomInt(10, 20) + 20 * i}
+			--image={`url(${card.icon})`}
+		/>
+	{/each}
+{/if}
 
 <svelte:window bind:scrollY={y} />

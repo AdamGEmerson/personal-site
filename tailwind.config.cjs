@@ -20,6 +20,7 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'card-gradient': 'linear-gradient(159deg, #EDE1DB 42.08%, #8289A1 145.14%)',
         'menu-radial': 'radial-gradient(220.89% 90.64% at 4.38% 0%, #02192F 0%, #000103 100%)',
         'hero-gradient': 'radial-gradient(192.77% 78.62% at 0% 0%, #02192F 0%, #000103 100%)',
         'hr-gradient': 'linear-gradient(90deg, rgba(26,145,255,.9) 0%, rgba(20,233,131,.6) 40%, rgba(20,233,131,0) 100%)',
