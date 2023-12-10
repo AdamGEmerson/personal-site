@@ -1,4 +1,5 @@
 import { readable } from 'svelte/store';
+import { icons } from '../images/icons';
 
 export const cards = readable<CardStore>({
 	faceCards: [
@@ -9,7 +10,7 @@ export const cards = readable<CardStore>({
 			description: 'JavaScript Library',
 			author: 'Meta (Facebook)',
 			year: 2012,
-			icon: '/src/images/react.svg'
+			icon: icons.react
 		},
 		{
 			name: 'Svelte',
@@ -18,7 +19,7 @@ export const cards = readable<CardStore>({
 			description: 'Web Framework',
 			author: 'Rich Harris, et al.',
 			year: 2016,
-			icon: '/src/images/svelte.svg'
+			icon: icons.svelte
 		},
 		{
 			name: 'Tailwind',
@@ -27,7 +28,7 @@ export const cards = readable<CardStore>({
 			description: 'CSS Framework',
 			author: 'Adam Wathan, et al.',
 			year: 2017,
-			icon: '/src/images/tailwind.svg'
+			icon: icons.tailwind
 		},
 		{
 			name: 'Astro',
@@ -36,7 +37,7 @@ export const cards = readable<CardStore>({
 			description: 'Web Framework',
 			author: 'Fred K. Schott, et al.',
 			year: 2021,
-			icon: '/src/images/astro.svg'
+			icon: icons.astro
 		}
 	]
 });

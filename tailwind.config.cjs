@@ -19,6 +19,10 @@ module.exports = {
         'hero': ['128px', '106%'],
       },
       backgroundImage: {
+        'react': 'url("/src/images/react.svg")',
+        'svelte': 'url("/src/images/svelte.svg")',
+        'astro': 'url("/src/images/astro.svg")',
+        'tailwind': 'url("/src/images/tailwind.svg")',
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'card-gradient': 'linear-gradient(159deg, #EDE1DB 42.08%, #8289A1 145.14%)',
         'menu-radial': 'radial-gradient(220.89% 90.64% at 4.38% 0%, #02192F 0%, #000103 100%)',
