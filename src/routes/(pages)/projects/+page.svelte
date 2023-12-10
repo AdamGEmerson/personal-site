@@ -1,8 +1,11 @@
 <script lang="ts">
-	import ProjectCard from '/src/components/ProjectCard.svelte';
-	import { projects } from '/src/stores/featured';
+	import ProjectCard from '../../../components/ProjectCard.svelte';
+	import { projects } from '../../../stores/featured';
+	import type { Project } from '../../../stores/featured';
 	import ogImage from '/src/images/adamemerson_og.png';
-	let pages;
+
+	let pages: { [key: string]: Project };
+
 	projects.subscribe((value) => {
 		pages = value;
 	});
@@ -32,7 +35,7 @@
 
 <div id="work" class="h-full w-full my-8 pb-32 flex flex-col">
 	<div class="grid grid-cols-1 sm:grid-cols-2 carousel-container gap-16">
-		{#each Object.entries(pages) as [slug, project], i}
+		{#each Object.entries(pages) as [_slug, project]}
 			{#if !project.isResearch}
 				<ProjectCard {project} />
 			{/if}

@@ -60,14 +60,6 @@
     }
 }
 
-@layer components {
-    .jumbotron {
-        @apply font-serif mb-8 text-6xl bg-gradient-to-r from-hero-blue to-hero-green inline-block text-transparent;
-        @apply bg-clip-text transition-all duration-500 ease-in-out;
-        @apply md:text-7xl xl:text-8xl;
-    }
-}
-
 body {
     @apply h-screen w-screen overflow-hidden;
 }

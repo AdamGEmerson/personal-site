@@ -1,11 +1,11 @@
-<script>
-	export let href;
-	export let label;
+<script lang="ts">
+	export let href: string;
+	export let label: string;
 </script>
 
-<div class="h-8 w-8 sm:h-12 sm:w-12">
+<div class="h-12 w-16 group">
 	<a
-		class="relative rounded-full h-full w-full flex flex-auto justify-around transition-all duration-300 hover:bg-opacity-90"
+		class="relative h-full w-full flex flex-auto transition-none justify-around duration-300 group-hover:text-stone-300 group-hover:bg-stone-900"
 		{href}
 		target="_blank"
 		rel="noreferrer"

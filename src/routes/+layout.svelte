@@ -30,11 +30,11 @@
 	});
 </script>
 
-<div class="absolute h-screen w-screen">
-	<div class="relative text-stone-900 p-16 h-5/6">
+<div class="absolute h-screen w-screen flex flex-col">
+	<div class="relative text-stone-900 md:p-16 h-5/6">
 		<slot />
 	</div>
-	<div class="relative h-1/6">
+	<div class="relative">
 		<Footer />
 	</div>
 </div>
