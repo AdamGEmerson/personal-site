@@ -2,7 +2,6 @@
 	import LinkButton from './LinkButton.svelte';
 	import { IconBook, IconBrandGithub, IconLink } from '@tabler/icons-svelte';
 	import LinkIcon from './LinkIcon.svelte';
-	import type { Project } from '../stores/featured';
 
 	export let project: Project;
 </script>

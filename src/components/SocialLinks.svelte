@@ -9,10 +9,10 @@
 	};
 </script>
 
-<div class="flex flex-col justify-end">
+<div class="flex flex-col justify-end relative">
 	{#key label}
 		<p
-			class="text-right font-mono px-4 bg-stone-900 text-stone-300"
+			class="text-right font-mono px-4 bg-stone-900 text-stone-300 z-20"
 			id="links-label"
 			transition:slide
 		>

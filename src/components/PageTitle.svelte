@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { fly, fade } from 'svelte/transition';
-	import { quadOut } from 'svelte/easing';
+	import { fly, fade, slide } from 'svelte/transition';
 	import { page } from '$app/stores';
-	export let url: string;
+	import { onMount } from 'svelte';
+	import { cubicInOut } from 'svelte/easing';
+	import { capitalized } from '../utils/helpers';
+	export let url = '';
 	console.log('URL', url);
 	let crumbs: string[] = [];
 
@@ -13,26 +15,36 @@
 			.filter((crumb: string) => !['https:', 'localhost', 'http:', ''].includes(crumb));
 	});
 
-	const capitalized = (crumb: string) => crumb.charAt(0).toUpperCase() + crumb.slice(1);
+	let mounted = false;
+	onMount(() => {
+		mounted = true;
+	});
 </script>
 
-{#key url}
-	<div class="font-mono text-stone-900 flex flex-row gap-2">
-		<div class="group p-2 hover:bg-stone-900 hover:cursor-pointer transition-colors">
-			<a href={'/'} class="group-hover:text-stone-300">Home</a>
-		</div>
-		{#each crumbs as crumb, i}
-			<div class="py-2">/</div>
-			<div class="group p-2 hover:bg-stone-900 hover:cursor-pointer">
-				<a href={'/' + crumbs.slice(0, i + 1).join('/')} class="group-hover:text-stone-300"
-					>{capitalized(crumb)}
-				</a>
+{#if mounted}
+	<div transition:slide={{ easing: cubicInOut, duration: 900, axis: 'x' }}>
+		<div class="font-mono flex flex-row bg-stone-900 text-stone-300 h-12">
+			<div class="group p-2 hover:bg-stone-900 hover:cursor-pointer hover:underline">
+				<a href={'/'} class="group-hover:text-stone-300">Home</a>
 			</div>
-		{/each}
-	</div>
-	<div>
-		<div in:fly={{ duration: 400, delay: 300, y: 20 }} out:fade={{ duration: 200 }}>
-			<slot />
+			{#key url}
+				{#each crumbs as crumb, i}
+					<div transition:fly={{ delay: 100 * i, y: 10 }} class="flex flex-row">
+						<div class="py-2">/</div>
+						<div class="group p-2 hover:bg-stone-900 hover:cursor-pointer">
+							<a
+								href={'/' + crumbs.slice(0, i + 1).join('/')}
+								class="group-hover:text-stone-300 group-hover:underline transition-colors"
+								>{capitalized(crumb)}
+							</a>
+						</div>
+					</div>
+				{/each}
+			{/key}
 		</div>
 	</div>
-{/key}
+
+	<div in:fly={{ duration: 400, delay: 300, y: 20 }} out:fade={{ duration: 200 }}>
+		<slot />
+	</div>
+{/if}

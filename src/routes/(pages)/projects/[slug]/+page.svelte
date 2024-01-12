@@ -1,94 +1,162 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { projects } from '/src/stores/featured';
-	import { IconBrandGithub, IconLink } from '@tabler/icons-svelte';
-	import type { Project } from '/src/stores/featured';
-	let pages;
+	import { fly, blur } from 'svelte/transition';
+	import ProjectTitle from '../../../../components/ProjectTitle.svelte';
+	import { onMount } from 'svelte';
+	import SectionHeading from '../../../../components/SectionHeading.svelte';
+	import ImageGallery from '../../../../components/ImageGallery.svelte';
+	import { goTo } from '../../../../utils/helpers';
+	import type { PageData } from './$types';
+	import { PortableText } from '@portabletext/svelte';
+	import CustomParagraph from '../../../../components/CustomParagraph.svelte';
+	import CustomLink from '../../../../components/CustomLink.svelte';
+	import { tweened } from 'svelte/motion';
+	import { circInOut } from 'svelte/easing';
+	import { hoveredLink } from '../../../../stores/hoveredLink';
 
-	projects.subscribe((value) => {
-		pages = value;
+	let hovered: { element: HTMLAnchorElement | null } = { element: null };
+
+	let linkHighlightY = tweened(0, {
+		duration: 500,
+		easing: circInOut
 	});
 
-	let project: Project = pages[$page.params.slug];
+	let linkHighlightX = tweened(0, {
+		duration: 500,
+		easing: circInOut
+	});
+
+	let linkFade = tweened(0, {
+		duration: 500,
+		easing: circInOut
+	});
+
+	let width = tweened(0, {
+		duration: 500,
+		easing: circInOut
+	});
+
+	hoveredLink.subscribe((value) => {
+		hovered = value;
+	});
+
+	export let data: PageData;
+
+	let pageData = data.data;
+	// let project: Project = pages[$page.params.slug];
+
+	let mounted = false;
+	onMount(() => {
+		mounted = true;
+	});
+
+	$: if (hovered && hovered.element) {
+		console.log(hovered);
+		console.log(hovered.element.offsetTop);
+		console.log(hovered.element.offsetLeft);
+		linkHighlightY.set(hovered.element.offsetTop);
+		linkHighlightX.set(hovered.element.offsetLeft);
+		width.set(hovered.element.getBoundingClientRect().width);
+		linkFade.set(1);
+	} else {
+		linkFade.set(0);
+	}
 </script>
 
 <svelte:head>
-	<title>{project.title} | Adam G. Emerson</title>
+	<title>{pageData.title} | Adam G. Emerson</title>
 	<meta
 		name="description"
-		content={project.description.length > 150
-			? project.description.slice(0, 150) + '...'
-			: project.description.slice(0, 150)}
+		content={pageData.description.length > 150
+			? pageData.description.slice(0, 150) + '...'
+			: pageData.description.slice(0, 150)}
 	/>
 </svelte:head>
 
-<div
-	class="flex justify-start flex-col sm:flex-row flex-wrap items-start sm:items-center gap-6 my-4"
->
-	<div class="flex flex-row justify-start gap-8">
-		<h1 class="text-5xl sm:text-6xl font-serif font-thin">{project.title}</h1>
-		<div class="flex flex-row justify-items-start space-x-4">
-			{#if project.href}
-				<div class="h-12 w-12 sm:h-14 sm:w-14">
-					<a
-						class="relative rounded-full h-full w-full flex flex-auto justify-around bg-gray-800 bg-opacity-60 transition-all duration-300 hover:bg-opacity-90"
-						href={project.href}
-						target="_blank"
-						rel="noreferrer"
-					>
-						<IconLink class="w-3/5 h-3/5 self-center text-dark-primary-text" />
-					</a>
+{#if mounted}
+	<div class="relative" out:blur|global={{ duration: 500, delay: 0 }}>
+		<!--{#if hovered.element}-->
+		<!--	<div-->
+		<!--		transition:fade={{ duration: 500, delay: 0 }}-->
+		<!--		class="bg-stone-900 absolute -z-10"-->
+		<!--		style={`top: ${$linkHighlightY}px; left: ${$linkHighlightX}px; opacity: ${$linkFade}; width: ${$width}px; height: ${-->
+		<!--			hovered.element ? Math.floor(hovered.element.getBoundingClientRect().height) : 0-->
+		<!--		}px;`}-->
+		<!--	/>-->
+		<!--{/if}-->
+		<div
+			class="flex flex-col-reverse lg:flex-row gap-8 py-4 lg:py-8 items-start h-full align-middle overflow-auto"
+		>
+			<div class="lg:flex-1">
+				<ProjectTitle
+					data={{ title: pageData.title, subtitle: pageData.subtitle }}
+					classes="hidden lg:block"
+				/>
+				<div class="flex justify-start gap-4">
+					<div class="flex w-3/4 flex-col justify-start">
+						<SectionHeading>Links</SectionHeading>
+						<div
+							class="flex flex-row justify-around items-center align-middle pb-4"
+							in:fly|global={{ delay: 200, duration: 500 }}
+						>
+							{#if pageData.projectLinks}
+								{#each pageData.projectLinks as link}
+									<div
+										role="button"
+										tabindex={0}
+										class="main-link font-mono group p-1 px-2 hover:cursor-pointer hover:bg-stone-900 w-full"
+										on:click={(e) => goTo(e, link.url)}
+										on:keypress={(e) => goTo(e, link.url)}
+									>
+										<a href={link.url} class="group-hover:text-stone-300">{link.name}</a>
+									</div>
+								{/each}
+							{/if}
+						</div>
+						<div class="flex flex-col justify-start w-64">
+							<SectionHeading>Tech Stack</SectionHeading>
+							<div
+								class="flex flex-row justify-around items-center align-middle"
+								in:fly|global={{ delay: 200, duration: 500 }}
+							>
+								{#each pageData.madeWith as tech}
+									<div class="relative h-12 flex-1 flex self-center text-center justify-center">
+										<svelte:component
+											this={tech.icon}
+											slot="icon"
+											class="w-3/5 h-3/5 self-center text-stone-900"
+										/>
+									</div>
+								{/each}
+							</div>
+						</div>
+					</div>
+					<div transition:fly={{ duration: 500, x: 100, delay: 500 }} class="p-1 w-full">
+						<ImageGallery images={data.images} />
+					</div>
 				</div>
-			{/if}
-			{#if project.githubHref}
-				<div class="h-12 w-12 sm:h-14 sm:w-14">
-					<a
-						class="relative rounded-full h-full w-full flex flex-auto justify-around bg-gray-800 bg-opacity-60 transition-all duration-300 hover:bg-opacity-90"
-						href={project.githubHref}
-						target="_blank"
-						rel="noreferrer"
-					>
-						<IconBrandGithub slot="icon" class="w-3/5 h-3/5 self-center text-dark-primary-text " />
-					</a>
+				<div class="overflow-scroll" in:blur|global={{ duration: 500, delay: 500 }}>
+					<SectionHeading>About</SectionHeading>
+					<p class="my-4">
+						<PortableText
+							value={pageData.description}
+							components={{
+								block: {
+									normal: CustomParagraph
+								},
+								marks: {
+									link: CustomLink
+								}
+							}}
+						/>
+					</p>
 				</div>
-			{/if}
+				<div class="self-start flex flex-row">
+					<ProjectTitle
+						data={{ title: pageData.title, subtitle: pageData.subtitle }}
+						classes="block lg:hidden"
+					/>
+				</div>
+			</div>
 		</div>
 	</div>
-
-	<img
-		src={project.screenshots[0].url}
-		alt={project.screenshots[0].alt}
-		class="object-cover h-max w-full rounded-3xl overflow-hidden border border-gray-800"
-	/>
-</div>
-<h3 class="font-sans font-bold text-lg mt-12">Made With</h3>
-<div class="flex flex-row flex-wrap justify-items-start gap-2 w-full pl-4">
-	{#each project.madeWith as tech}
-		<div class="w-16 h-16 flex flex-col space-y-2 items-center">
-			<svelte:component
-				this={tech.icon}
-				slot="icon"
-				class="w-4/5 h-4/5 self-center text-dark-primary-text"
-			/>
-			<span class="text-xs">{tech.name}</span>
-		</div>
-	{/each}
-</div>
-<h3 class="font-sans font-bold text-lg mt-12">About</h3>
-<div class="pl-4">
-	<p>{project.description}</p>
-</div>
-<h3 class="font-sans font-bold text-lg mt-12">Images</h3>
-
-<div class="flex flex flex-col space-y-8 items-center w-full p-4 h-full">
-	{#each project.screenshots as pic, i (i)}
-		{#if i > 0}
-			<img
-				src={pic.url}
-				alt={pic.alt}
-				style="object-fit: cover"
-				class="h-1/3 w-full rounded-3xl overflow-hidden border border-gray-800"
-			/>
-		{/if}
-	{/each}
-</div>
+{/if}
