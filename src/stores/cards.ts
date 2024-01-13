@@ -10,7 +10,9 @@ export const cards = readable<CardStore>({
 			description: 'JavaScript Library',
 			author: 'Meta (Facebook)',
 			year: 2012,
-			icon: icons.react
+			icon: icons.react,
+			gradientFrom: 'from-blue-300',
+			gradientTo: 'to-sky-300'
 		},
 		{
 			name: 'Svelte',
@@ -19,7 +21,9 @@ export const cards = readable<CardStore>({
 			description: 'Web Framework',
 			author: 'Rich Harris, et al.',
 			year: 2016,
-			icon: icons.svelte
+			icon: icons.svelte,
+			gradientFrom: 'from-rose-300',
+			gradientTo: 'to-orange-300'
 		},
 		{
 			name: 'Tailwind',
@@ -28,7 +32,9 @@ export const cards = readable<CardStore>({
 			description: 'CSS Framework',
 			author: 'Adam Wathan, et al.',
 			year: 2017,
-			icon: icons.tailwind
+			icon: icons.tailwind,
+			gradientFrom: 'from-blue-300',
+			gradientTo: 'to-teal-300'
 		},
 		{
 			name: 'Astro',
@@ -37,7 +43,9 @@ export const cards = readable<CardStore>({
 			description: 'Web Framework',
 			author: 'Fred K. Schott, et al.',
 			year: 2021,
-			icon: icons.astro
+			icon: icons.astro,
+			gradientFrom: 'from-orange-300',
+			gradientTo: 'to-violet-300'
 		}
 	]
 });

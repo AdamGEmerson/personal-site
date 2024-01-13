@@ -1,4 +1,7 @@
 type CardSuit = 'framework' | 'language' | 'tool' | 'database';
+type BentoVariant = 'default' | 'icon' | 'projects';
+type ProjectLink = { name: string; url: string };
+type MenuItem = { name: string; path: string };
 interface Card {
 	name: string;
 	description: string;
@@ -7,7 +10,37 @@ interface Card {
 	value: string;
 	suit: CardSuit;
 	icon: string;
+	gradientFrom: string;
+	gradientTo: string;
 }
 interface CardStore {
 	faceCards: Card[];
+}
+
+interface Project {
+	slug: string;
+	title: string;
+	subtitle: string;
+	isResearch: boolean;
+	featured: boolean;
+	projectLinks?: ProjectLink[];
+	paperTitle?: string;
+	paperLink?: string;
+	conference?: string;
+	authors?: string[];
+	description: string;
+	madeWith: {
+		name: string;
+		icon: any;
+	}[];
+	screenshots: HTMLImageElement[];
+	updated: string;
+}
+
+interface BentoItemProps {
+	id: number;
+	name: string;
+	description?: string;
+	variant?: BentoVariant;
+	featured: boolean;
 }

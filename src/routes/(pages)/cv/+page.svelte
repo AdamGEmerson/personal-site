@@ -22,7 +22,7 @@
 	<meta name="twitter:description" content="Software Engineering and Web Development Portfolio" />
 </svelte:head>
 
-<div class="w-full z-50">
+<div class="w-full z-50 font-sans">
 	<h1>Adam G. Emerson</h1>
 	<h2>HCI Research & Software Development</h2>
 	<LinkButton text="PDF" route={resumePDF} icon={IconDownload} />
@@ -245,18 +245,18 @@
 
 <style>
 	h1 {
-		@apply text-4xl font-bold my-4;
+		@apply text-4xl font-serif my-4;
 	}
 	h2 {
-		@apply text-xl font-bold my-4;
+		@apply text-xl font-mono font-bold my-4;
 	}
 	h3 {
-		@apply text-xl font-bold my-4 border-b-2 border-white;
+		@apply text-lg font-mono my-4 border-b-2 border-stone-900;
 	}
 	.cv-section {
 		@apply my-8;
 	}
 	.entry-dates {
-		@apply mr-8 w-2/12 text-sm;
+		@apply mr-8 w-2/12 text-sm font-mono;
 	}
 </style>

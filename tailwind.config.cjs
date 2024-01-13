@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'serif': ["Alliance and Data", "Swomun Serif", 'Times New Roman', 'serif'],
-        'sans': [ 'Nexa', 'Helvetica', 'Verdana', 'sans-serif'],
+        'sans': [ 'Open Sans', 'Verdana', 'sans-serif'],
         'mono': ['Andale Mono', 'monospace']
       },
       colors: {
@@ -52,6 +52,9 @@ module.exports = {
           '100%': { transform: 'translateX(0%)' },
         },
       },
+      gridTemplateColumns: {
+        '16': 'repeat(16, minmax(0, 1fr))',
+      }
     },
     plugins: [],
   },
