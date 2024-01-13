@@ -1,5 +1,5 @@
 type CardSuit = 'framework' | 'language' | 'tool' | 'database';
-type BentoVariant = 'default' | 'icon' | 'projects';
+type BentoVariant = 'default' | 'icon' | 'featured';
 type ProjectLink = { name: string; url: string };
 type MenuItem = { name: string; path: string };
 interface Card {
