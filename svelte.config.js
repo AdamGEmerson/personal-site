@@ -8,7 +8,10 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		prerender: {
+			entries: ['/projects/auragraph', '/projects/sightstone', '/projects/universe']
+		}
 	}
 };
 
