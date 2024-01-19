@@ -61,7 +61,7 @@
 	$: if (url === '/') crumbs = [];
 </script>
 
-{#if mounted}
+{#if mounted && url !== '/'}
 	<div
 		transition:slide={{ easing: cubicInOut, duration: 900, axis: 'x' }}
 		class="flex flex-row align-middle bg-stone-900 text-stone-300 h-10 w-full mx-auto"

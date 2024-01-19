@@ -5,7 +5,7 @@
 	import { page } from '$app/stores';
 	import Footer from '../components/Footer.svelte';
 	import ToolBar from '../components/ToolBar.svelte';
-	export let data;
+
 	let currentPath = '';
 
 	onMount(() => {
@@ -33,8 +33,8 @@
 
 <div class="absolute w-screen flex flex-col p-8 md:p-24 h-screen overflow-y-auto overflow-x-clip">
 	<div class="text-stone-900 flex-1 flex flex-col gap-16 w-full">
-		<!--		<ToolBar />-->
+		<ToolBar />
 		<slot />
 	</div>
-	<!--	<Footer />-->
 </div>
+<!--<Footer />-->

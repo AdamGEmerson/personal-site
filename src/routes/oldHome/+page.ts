@@ -17,22 +17,20 @@ const urlFor = (source: any) => {
 };
 
 export const load: PageLoad = async ({ params }) => {
-	const data = await client.fetch(`*[_type == "project" && featured == true]`);
-	console.log(data);
-	if (data) {
-		const payload = data.map((project: any) => ({
-			...project,
+	const data = await client.fetch(`*[_type == "project" && isFeatured == true]`);
+	if (data && data.length === 1) {
+		console.log(data[0]);
+		const payload = data.map((project: any) => {
+			data: project.data;
 			images: project.images.map((image: any) => ({
 				alt: image.alt as string,
 				src: urlFor(image.image).url()
-			}))
-		}));
+			}));
+		});
 		while (payload.length < 4) {
 			payload.push(payload[0]);
 		}
-		return {
-			data: payload
-		};
+		return payload;
 	} else {
 		console.log('not found');
 		error(404, 'Project not found');
