@@ -10,7 +10,16 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		prerender: {
-			entries: ['/projects/auragraph', '/projects/sightstone', '/projects/universe']
+			entries: [
+				'/',
+				'/card-test',
+				'/cv',
+				'/projects',
+				'/research',
+				'/projects/auragraph',
+				'/projects/sightstone',
+				'/projects/universe'
+			]
 		}
 	}
 };

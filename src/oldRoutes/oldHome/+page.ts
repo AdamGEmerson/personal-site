@@ -1,4 +1,4 @@
-import type { PageLoad } from './$types';
+import type { PageLoad } from '../../../.svelte-kit/types/src/routes';
 import { error } from '@sveltejs/kit';
 import { createClient } from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
