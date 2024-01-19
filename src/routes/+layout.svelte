@@ -5,7 +5,7 @@
 	import { page } from '$app/stores';
 	import Footer from '../components/Footer.svelte';
 	import ToolBar from '../components/ToolBar.svelte';
-	export let data;
+
 	let currentPath = '';
 
 	onMount(() => {
@@ -36,5 +36,5 @@
 		<ToolBar />
 		<slot />
 	</div>
-	<Footer />
 </div>
+<!--<Footer />-->

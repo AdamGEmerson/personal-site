@@ -37,7 +37,7 @@
 {#if mounted}
 	<div class="w-128 h-96 m-auto my-32 relative">
 		<img
-			src="../src/images/auragraph/auragraphHome.png"
+			src="../../images/auragraph/auragraphHome.png"
 			alt="test"
 			class="z-10 absolute top-0 left-0 object-cover w-full h-full"
 		/>
