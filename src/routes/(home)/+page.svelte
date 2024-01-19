@@ -10,7 +10,7 @@
 	import LargeBento from '../../components/LargeBento.svelte';
 	import SmallBento from '../../components/SmallBento.svelte';
 	import Starburst from '../../components/Starburst.svelte';
-	import { toolBar } from '../../stores/toolBar';
+	import ogImage from '/src/images/adamemerson_og.png';
 
 	let innerWidth = 0;
 
@@ -129,6 +129,28 @@
 		}
 	}
 </script>
+
+<svelte:head>
+	<title>Adam G. Emerson</title>
+	<meta
+		name="description"
+		content="Adam Emerson is a fullstack Software Engineer and designer. When not working on web development projects he also dabbles in HCI research."
+	/>
+	<link rel="canonical" href="https://adamemerson.com" />
+	<meta property="og:title" content="Adam G. Emerson" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:url" content="https://adamemerson.com" />
+	<meta
+		property="og:description"
+		content="Adam Emerson is a fullstack Software Engineer and designer. When not working on web development projects he also dabbles in HCI research."
+	/>
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content="@adamgemerson" />
+	<meta name="twitter:creator" content="@adamgemerson" />
+	<meta name="twitter:title" content="Adam G. Emerson" />
+	<meta name="twitter:description" content="Software Engineer and Designer" />
+</svelte:head>
 
 {#if mounted}
 	<div class="w-full h-full flex items-center justify-around">
