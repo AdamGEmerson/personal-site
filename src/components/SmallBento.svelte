@@ -38,14 +38,16 @@
 					>
 						<div class={'flex'}>
 							<div class="flex-1">
-								<h2 class="font-serif text-xl">{item.title}</h2>
-								<p class="font-mono text-sm h-16">{item.oneLiner}</p>
+								<div class="flex flex-row gap-2 justify-start items-center align-middle">
+									{#if item.isResearch}
+										<IconMicroscope class="flex-0 h-4 w-4 sm:h-8 sm:w-8 text-stone-600" />
+									{:else}
+										<IconGeometry class="flex-0 h-4 w-4 sm:h-8 sm:w-8 text-stone-600" />
+									{/if}
+									<h2 class="font-serif text-lg sm:text-xl">{item.title}</h2>
+								</div>
+								<p class="font-mono text-[8px] md:text-sm">{item.oneLiner}</p>
 							</div>
-							{#if item.isResearch}
-								<IconMicroscope class="flex-0 h-8 w-8 text-stone-600 self-end" />
-							{:else}
-								<IconGeometry class="flex-0 h-8 w-8 text-stone-600 self-end" />
-							{/if}
 						</div>
 						<TimerBar {timer} />
 						{#key item}

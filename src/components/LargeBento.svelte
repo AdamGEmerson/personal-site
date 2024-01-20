@@ -4,12 +4,14 @@
 	import BentoItem from './BentoItem.svelte';
 	import { IconGeometry, IconMicroscope } from '@tabler/icons-svelte';
 	import TimerBar from './TimerBar.svelte';
-	import { onMount } from 'svelte';
+	import { beforeUpdate, onDestroy, onMount } from 'svelte';
 
 	export let featured: any[];
 	export let timer: any;
 	export let mid: any[];
 	export let preloadedImages: { [key: string]: { src: string; alt: string } };
+	let intervalId: any;
+	let imageShown = true;
 
 	let mounted = false;
 	onMount(() => {
@@ -41,7 +43,7 @@
 				{#key item}
 					<div class="h-full">
 						<div
-							in:slide={{ delay: 600, duration: 1000, easing: quintOut }}
+							in:slide={{ delay: 200, duration: 1000, easing: quintOut }}
 							class="w-full h-full bg-teal-900"
 						>
 							<img

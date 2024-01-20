@@ -12,19 +12,24 @@
 	import Starburst from '../../components/Starburst.svelte';
 	import ogImage from '/src/images/adamemerson_og.png';
 
-	let innerWidth = 0;
+	export let data: PageData;
 
+	let innerWidth = 0;
+	let bentoItems = data.data;
+	let featured: typeof bentoItems = [];
+	let mid: typeof bentoItems = [];
+	let preloadedImages: { [key: string]: { src: string; alt: string } } = {};
 	let title = 'Adam G. Emerson';
 	let typedTitle = '';
 	let index = 0;
 	let isTyping = false;
 	let ghostBox: HTMLDivElement;
+	let intervalId: any;
 	let menuItems: MenuItem[] = [
 		{ name: 'Projects', path: '/projects' },
 		{ name: 'Research', path: '/research' },
 		{ name: 'CV', path: '/cv' }
 	];
-
 	let typeWriter: NodeJS.Timeout; // eslint-disable-line no-undef
 	const typing = () => (typeWriter = setInterval(typeChar, 100));
 	const stopTyping = () => clearInterval(typeWriter);
@@ -40,13 +45,6 @@
 		}
 	};
 
-	let hoveredCard = false;
-	const handlePlayHover = (event: Event) => (hoveredCard = event.type === 'mouseenter');
-
-	let y = 0;
-
-	let timeout;
-
 	gsap.registerPlugin(Flip);
 
 	function flip() {
@@ -60,18 +58,11 @@
 			});
 		});
 	}
-	export let data: PageData;
-	let bentoItems = data.data;
-	let featured: typeof bentoItems = [];
-	let mid: typeof bentoItems = [];
-	let preloadedImages: { [key: string]: { src: string; alt: string } } = {};
 
 	let timer = tweened(100, {
 		duration: 10000,
 		easing: linear
 	});
-
-	let intervalId: any;
 	const rotateFeature = () => {
 		if (window.innerWidth < 768) {
 			bentoItems = [...bentoItems.slice(1, 3), bentoItems[0]];
@@ -158,7 +149,7 @@
 
 <div class="w-full h-full flex items-center justify-around">
 	<div
-		class="grid grid-cols-6 grid-rows-6 md:grid-cols-16 md:grid-rows-4 gap-2 md:grid-flow-col grid-flow-row w-[90vw] h-[90vh] md:w-[80vw] md:h-[80vh]"
+		class="grid grid-cols-6 grid-rows-6 md:grid-cols-16 md:grid-rows-4 gap-2 md:grid-flow-col grid-flow-row w-[90vw] h-full md:w-[80vw] md:h-[80vh]"
 	>
 		<!-- Heading -->
 		{#if mounted}
@@ -167,7 +158,7 @@
 				class="col-span-full row-span-1 md:row-span-1 bg-stone-900 text-stone-300 p-8 order-first"
 			>
 				<h2
-					class="text-4xl sm:text-6xl lg:text-8xl transition-all font-serif flex items-end"
+					class="text-3xl sm:text-6xl lg:text-7xl transition-all font-serif flex items-end"
 					out:fly
 				>
 					{typedTitle}
@@ -175,7 +166,7 @@
 				<!--			<p class="font-mono">Full Stack Engineer • Web Designer</p>-->
 				<div in:blur|global={{ duration: 1000, delay: 800 }}>
 					<Marquee
-						class="text-sm md:text-md font-mono bg-stone-900 text-stone-300 p-1 w-full align-middle"
+						class="text-xs md:text-md font-mono bg-stone-900 text-stone-300 p-1 w-full align-middle"
 						speed={0.1}
 						hoverSpeed={0.1}
 					>
