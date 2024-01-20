@@ -19,7 +19,7 @@
 	});
 </script>
 
-<a class="relative flex starburst" href="/card-test">
+<a class="relative flex starburst" href="/blackjack">
 	<svg
 		class="z-40"
 		width={mql.matches ? 164 : size}

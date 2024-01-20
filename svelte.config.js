@@ -12,7 +12,7 @@ const config = {
 		prerender: {
 			entries: [
 				'/',
-				'/card-test',
+				'/blackjack',
 				'/cv',
 				'/projects',
 				'/research',

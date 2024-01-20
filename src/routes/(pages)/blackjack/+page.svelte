@@ -4,6 +4,8 @@
 	import SectionHeading from '../../../components/SectionHeading.svelte';
 	import { capitalized } from '../../../utils/helpers.js';
 	import { quintOut } from 'svelte/easing';
+	import BlackJackStats from '../../../components/blackjack/BlackJackStats.svelte';
+	import Scoreboard from '../../../components/blackjack/Scoreboard.svelte';
 
 	// let deck: Card[];
 	// cards.subscribe((value) => {
@@ -216,49 +218,23 @@
 	$: hitEnabled = !hold && gameActive;
 </script>
 
-<div class="h-96 m-auto my-32 flex flex-col w-full items-start gap-2">
-	<div class="flex flex-row justify-around items-center w-full h-24 mb-16">
-		<div class="text-xl md:text-3xl font-serif w-full mr-4">
-			Dealer
-			<div class="font-mono text-sm w-full">
-				<SectionHeading>Stats</SectionHeading>
-				<div class="p-2">
-					<div>Wins: {dealerWins}</div>
-					<div>Streak: {dealerStreak}</div>
-					<div>Best Streak: {bestDealerStreak}</div>
-				</div>
-			</div>
+<div class="flex flex-col h-full w-full items-start gap-2 py-8">
+	<div class="flex flex-wrap md:flex-nowrap md:flex-row justify-around items-center w-full h-full">
+		<BlackJackStats
+			name="Dealer"
+			wins={dealerWins}
+			streak={dealerStreak}
+			bestStreak={bestDealerStreak}
+		/>
+		<div class="order-first md:order-none w-full">
+			<Scoreboard {playerScore} {dealerScore} />
 		</div>
-		<div class="flex flex-row bg-stone-900 text-stone-300 h-full w-56 justify-around gap-2 p-2">
-			{#key dealerScore}
-				<div
-					in:slide={{ duration: 500, easing: quintOut }}
-					class="font-serif text-6xl bg-stone-900 flex justify-around items-center self-center h-24 w-24"
-				>
-					{dealerScore > 9 ? '' : '0'}{dealerScore}
-				</div>
-			{/key}
-			<div class="font-serif text-6xl flex w-8 justify-around items-center h-full">•</div>
-			{#key playerScore}
-				<div
-					in:slide={{ duration: 500, easing: quintOut }}
-					class="font-serif text-6xl bg-stone-900 flex justify-around items-center h-full w-24"
-				>
-					{playerScore > 9 ? '' : '0'}{playerScore}
-				</div>
-			{/key}
-		</div>
-		<div class="text-xl md:text-3xl font-serif w-full ml-4">
-			Player
-			<div class="font-mono text-sm w-full">
-				<SectionHeading>Stats</SectionHeading>
-				<div class="p-2">
-					<div>Wins: {playerWins}</div>
-					<div>Streak: {playerStreak}</div>
-					<div>Best Streak: {bestPlayerStreak}</div>
-				</div>
-			</div>
-		</div>
+		<BlackJackStats
+			name="Player"
+			wins={playerWins}
+			streak={playerStreak}
+			bestStreak={bestPlayerStreak}
+		/>
 	</div>
 	<div class="w-full">
 		{#key message}
