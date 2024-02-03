@@ -4,7 +4,7 @@
 	import BentoItem from './BentoItem.svelte';
 	import { IconGeometry, IconMicroscope } from '@tabler/icons-svelte';
 	import TimerBar from './TimerBar.svelte';
-	import { beforeUpdate, onDestroy, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 	export let featured: any[];
 	export let timer: any;
@@ -26,34 +26,31 @@
 				in:blur|global={{ easing: quintOut, duration: 1000 }}
 				data-flip-id={item._id}
 				href={`/${item.isResearch ? 'research' : 'projects'}/${item.slug}`}
-				class="bento-item w-full h-full p-4 bg-stone-900 text-stone-300 hover:bg-stone-900/95 hover:cursor-pointer flex flex-col gap-2 justify-start"
+				class="bento-item w-full h-full p-8 bg-stone-900 text-stone-300 hover:bg-stone-900/95 hover:cursor-pointer flex flex-col gap-2 justify-start"
 			>
-				<div class={'flex'}>
+				<div class={'flex flex-col gap-4'}>
 					<div class="flex-1">
-						<h2 class="font-serif text-xl">{item.title}</h2>
-						<p class="font-mono text-sm h-16">{item.oneLiner}</p>
+						<div class="flex flex-row gap-4 justify-start items-center align-middle">
+							{#if item.isResearch}
+								<IconMicroscope class="flex-0 h-4 w-4 sm:h-8 sm:w-8 text-stone-600" />
+							{:else}
+								<IconGeometry class="flex-0 h-4 w-4 sm:h-8 sm:w-8 text-stone-600" />
+							{/if}
+							<h2 class="font-serif text-5xl">{item.title}</h2>
+						</div>
 					</div>
-					{#if item.isResearch}
-						<IconMicroscope class="flex-0 h-8 w-8 text-stone-600 self-end" />
-					{:else}
-						<IconGeometry class="flex-0 h-8 w-8 text-stone-600 self-end" />
-					{/if}
-				</div>
-				<TimerBar {timer} />
-				{#key item}
-					<div class="h-full">
-						<div
-							in:slide={{ delay: 200, duration: 1000, easing: quintOut }}
-							class="w-full h-full bg-teal-900"
-						>
+					<TimerBar {timer} />
+					{#key item}
+						<div class="h-full" in:slide={{ delay: 200, duration: 1000, easing: quintOut }}>
 							<img
 								src={preloadedImages[item._id].src}
 								alt={preloadedImages[item._id].alt}
-								class="h-full w-full border-2 border-stone-300 object-cover"
+								class="h-auto w-full border-2 border-stone-300 object-cover"
 							/>
 						</div>
-					</div>
-				{/key}
+					{/key}
+					<p class="font-mono text-md">{item.description}</p>
+				</div>
 			</a>
 		{/each}
 	</div>

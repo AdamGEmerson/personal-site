@@ -1,4 +1,4 @@
-type CardSuit = 'framework' | 'language' | 'tool' | 'database';
+type CardSuit = 'spades' | 'hearts' | 'clubs' | 'diamonds';
 type BentoVariant = 'default' | 'icon' | 'featured';
 type ProjectLink = { name: string; url: string };
 type MenuItem = { name: string; path: string };

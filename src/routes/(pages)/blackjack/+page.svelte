@@ -3,10 +3,13 @@
 	import { onMount } from 'svelte';
 	import SectionHeading from '../../../components/SectionHeading.svelte';
 	import { capitalized } from '../../../utils/helpers.js';
-	import { quintOut } from 'svelte/easing';
 	import BlackJackStats from '../../../components/blackjack/BlackJackStats.svelte';
 	import Scoreboard from '../../../components/blackjack/Scoreboard.svelte';
+	import SimpleCard from '../../../components/blackjack/SimpleCard.svelte';
+	import { gsap } from 'gsap';
+	import { Flip } from 'gsap/dist/Flip';
 
+	gsap.registerPlugin(Flip);
 	// let deck: Card[];
 	// cards.subscribe((value) => {
 	// 	deck = value.faceCards;
@@ -14,11 +17,12 @@
 	// });
 
 	interface Card {
-		suit: string;
+		suit: CardSuit;
 		value: string;
+		revealed: boolean;
 	}
 
-	const suits = ['hearts', 'diamonds', 'clubs', 'spades'];
+	const suits: CardSuit[] = ['hearts', 'diamonds', 'clubs', 'spades'];
 	const values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 
 	let deck: Card[] = [];
@@ -41,11 +45,11 @@
 	let bestDealerStreak = 0;
 
 	onMount(() => {
-		suits.forEach((suit) => {
-			values.forEach((value) => {
-				deck.push({ suit, value });
-			});
-		});
+		// suits.forEach((suit) => {
+		// 	values.forEach((value) => {
+		// 		deck.push({ suit: suit, value: value, revealed: false });
+		// 	});
+		// });
 	});
 
 	function shuffle(array: Card[]) {
@@ -76,22 +80,30 @@
 		gameActive = true;
 		suits.forEach((suit) => {
 			values.forEach((value) => {
-				deck.push({ suit, value });
+				deck.push({ suit: suit, value: value, revealed: false });
 			});
 		});
 
 		shuffle(deck);
-		drawCard('dealer');
-		drawCard('player');
-		drawCard('player');
+		drawCard({ hand: 'dealer' });
+		drawCard({ hand: 'dealer', faceDown: true });
+		drawCard({ hand: 'player' });
+		drawCard({ hand: 'player' });
 		playerScore = calculateScore(playerHand);
 		dealerScore = calculateScore(dealerHand);
 		messageQueue.push('Cards are dealt...');
 	};
 
-	const drawCard = (hand: 'dealer' | 'player') => {
+	const drawCard = ({
+		hand,
+		faceDown = false
+	}: {
+		hand: 'player' | 'dealer';
+		faceDown?: boolean;
+	}) => {
 		if (deck.length > 0) {
 			let card = <Card>deck.pop();
+			card.revealed = !faceDown;
 			if (hand === 'dealer') {
 				dealerHand.push(card);
 				dealerHand = dealerHand;
@@ -101,6 +113,7 @@
 				playerHand = playerHand;
 				messageQueue.push(`Player draws ${card.value} of ${capitalized(card.suit)}`);
 			}
+			flip();
 		}
 	};
 
@@ -214,12 +227,23 @@
 			updateMessage();
 		}
 	}
-
 	$: hitEnabled = !hold && gameActive;
+
+	function flip() {
+		const state = Flip.getState('.playing-card');
+
+		requestAnimationFrame(() => {
+			Flip.from(state, {
+				target: '.playing-card',
+				ease: 'back.inOut(0.5)',
+				duration: 1
+			});
+		});
+	}
 </script>
 
-<div class="flex flex-col h-full w-full items-start gap-2 py-8">
-	<div class="flex flex-wrap md:flex-nowrap md:flex-row justify-around items-center w-full h-full">
+<div class="flex flex-col h-full items-start gap-2 py-8">
+	<div class="flex flex-wrap md:flex-nowrap md:flex-row justify-around items-center w-full flex-1">
 		<BlackJackStats
 			name="Dealer"
 			wins={dealerWins}
@@ -236,7 +260,7 @@
 			bestStreak={bestPlayerStreak}
 		/>
 	</div>
-	<div class="w-full">
+	<div class="w-full flex-1">
 		{#key message}
 			<div transition:slide>
 				<SectionHeading>{message}</SectionHeading>
@@ -244,7 +268,7 @@
 		{/key}
 	</div>
 
-	<div class="flex flex-row gap-2">
+	<div class="flex flex-row gap-2 flex-1 justify-center">
 		<button on:click={newGame} class="bg-stone-900 text-stone-300 p-2 font-mono">New Game</button>
 		<button
 			on:click={hit}
@@ -276,4 +300,19 @@
 			</div>
 		</div>
 	</div>
+	<div class="flex justify-around w-full items-center">
+		<div class="player-hand h-full flex-1 flex justify-start gap-4">
+			{#each dealerHand as card, i}
+				<SimpleCard {card} />
+			{/each}
+		</div>
+		<div class="player-hand h-full flex-1 flex justify-start gap-4">
+			{#each playerHand as card, i}
+				<SimpleCard {card} />
+			{/each}
+		</div>
+	</div>
 </div>
+
+<style>
+</style>

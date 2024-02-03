@@ -1,29 +1,23 @@
 <script lang="ts">
-	import { draggable } from '@neodrag/svelte';
-	import { animate, spring } from 'motion';
 	import { IconCode } from '@tabler/icons-svelte';
+	import { gsap } from 'gsap';
+	import { Draggable } from 'gsap/dist/Draggable';
+	import { onMount } from 'svelte';
+	gsap.registerPlugin(Draggable);
 
 	let cardId: string;
 	let card: Card;
 
 	export { cardId as id, card };
+
+	onMount(() => {
+		Draggable.create(`#${cardId}`);
+	});
 </script>
 
 <div
 	role="complementary"
 	id={cardId}
-	use:draggable={{
-		onDrag: ({ offsetX, offsetY }) => {
-			animate(`#${cardId}`, { x: offsetX, y: offsetY });
-		}
-	}}
-	on:mouseenter={() =>
-		animate(
-			`#${cardId}`,
-			{ scale: 1.05, zIndex: 50 },
-			{ easing: spring({ stiffness: 200, damping: 14 }) }
-		)}
-	on:mouseleave={() => animate(`#${cardId}`, { scale: 1, zIndex: 20 })}
 	class={`playing-card absolute w-48 h-72 md:w-64 md:h-96 rounded-2xl transition-shadow hover:shadow-xl shadow-md z-20 hover:cursor-grab bg-gradient-to-b ${card.gradientFrom} ${card.gradientTo}`}
 >
 	<div class={`card-background h-full w-full`}>
