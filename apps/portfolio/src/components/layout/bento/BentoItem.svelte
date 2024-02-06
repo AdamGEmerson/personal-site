@@ -8,7 +8,8 @@
 	} from '@tabler/icons-svelte';
 	import { slide, blur } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
-	import { onMount } from 'svelte';
+  import { onDestroy, onMount } from "svelte";
+  import ProjectIcon from "../project/ProjectIcon.svelte";
 
 	export let name: string;
 	export let bentoId = 1000;
@@ -51,14 +52,12 @@
 		>
 			<div class="flex-1">
 				<div class="flex flex-row gap-2 justify-start items-center align-middle">
-					{#if isResearch}
-						<IconMicroscope class="flex-0 h-4 w-4 sm:h-8 sm:w-8 text-stone-600" />
-					{:else}
-						<IconGeometry class="flex-0 h-4 w-4 sm:h-8 sm:w-8 text-stone-600" />
-					{/if}
-					<h2 class="font-serif text-lg sm:text-xl">{name}</h2>
+          <div class="text-stone-600">
+            <ProjectIcon {isResearch} />
+          </div>
+					<h2 class="font-serif text-3xl">{name}</h2>
 				</div>
-				<p class="font-mono md:text-xs text-[8px] sm:text-xs">{description}</p>
+				<p class="font-mono text-sm md:text-md">{description}</p>
 			</div>
 		</a>
 	{/if}

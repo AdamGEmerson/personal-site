@@ -7,9 +7,9 @@
 	import { linear, quintOut } from 'svelte/easing';
 	import { onDestroy, onMount } from 'svelte';
 	import type { PageData } from './$types';
-	import LargeBento from '../../components/LargeBento.svelte';
-	import SmallBento from '../../components/SmallBento.svelte';
-	import Starburst from '../../components/Starburst.svelte';
+	import LargeBento from '../../components/layout/bento/LargeBento.svelte';
+	import SmallBento from '../../components/layout/bento/SmallBento.svelte';
+	import Starburst from '../../components/ui/Starburst.svelte';
 	import ogImage from '/src/images/adamemerson_og.png';
 
 	export let data: PageData;
@@ -166,7 +166,7 @@
 				<!--			<p class="font-mono">Full Stack Engineer • Web Designer</p>-->
 				<div in:blur|global={{ duration: 1000, delay: 800 }}>
 					<Marquee
-						class="text-xs md:text-md font-mono bg-stone-900 text-stone-300 p-1 w-full align-middle"
+						class="text-xs md:text-lg font-mono bg-stone-900 text-stone-300 p-1 w-full align-middle"
 						speed={0.1}
 						hoverSpeed={0.1}
 					>
@@ -178,7 +178,7 @@
 				</div>
 			</div>
 		{/if}
-		{#if innerWidth >= 768}
+		{#if innerWidth >= 769}
 			<LargeBento {featured} {mid} {preloadedImages} {timer} />
 		{:else}
 			<SmallBento {featured} {mid} {preloadedImages} {timer} />

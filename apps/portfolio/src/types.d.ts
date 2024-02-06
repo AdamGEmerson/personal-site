@@ -2,6 +2,10 @@ type CardSuit = 'spades' | 'hearts' | 'clubs' | 'diamonds';
 type BentoVariant = 'default' | 'icon' | 'featured';
 type ProjectLink = { name: string; url: string };
 type MenuItem = { name: string; path: string };
+
+type SortKey = 'title' | 'subtitle' | 'updated';
+type SortOrder = 'none' | 'desc' | 'asc';
+
 interface Card {
 	name: string;
 	description: string;

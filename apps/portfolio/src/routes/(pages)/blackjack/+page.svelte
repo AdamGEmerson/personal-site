@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fly, slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
-	import SectionHeading from '../../../components/SectionHeading.svelte';
+	import SectionHeading from '../../../components/ui/SectionHeading.svelte';
 	import { capitalized } from '../../../utils/helpers.js';
 	import BlackJackStats from '../../../components/blackjack/BlackJackStats.svelte';
 	import Scoreboard from '../../../components/blackjack/Scoreboard.svelte';

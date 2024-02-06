@@ -1,12 +1,17 @@
 <script lang="ts">
 	import { projects } from '../../../stores/featured';
 	import ogImage from '/src/images/adamemerson_og.png';
-	import { fade, fly } from 'svelte/transition';
+	import { fade, fly, slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
-	import HoverMenu from '../../../components/HoverMenu.svelte';
-	import Starburst from '../../../components/Starburst.svelte';
+	import HoverMenu from '../../../components/layout/HoverMenu.svelte';
+	import Starburst from '../../../components/ui/Starburst.svelte';
+  import { IconGeometry, IconMicroscope, IconCaretUpDownFilled } from "@tabler/icons-svelte";
+  import type { PageData } from "./$types";
+  import ProjectList from "../../../components/layout/project/ProjectList.svelte";
 
 	let pages: { [key: string]: Project };
+
+  export let data: PageData[];
 
 	projects.subscribe((value) => {
 		pages = value;
@@ -56,23 +61,14 @@
 </svelte:head>
 
 {#if mounted}
-	<div id="work" class="h-full w-full my-8 pb-32 flex flex-col" transition:fade={{ delay: 500 }}>
-		<div class="flex flex-col">
-			<h1 class="text-5xl font-serif mb-4">Projects</h1>
-			<div class="font-mono bg-stone-900 text-stone-300 p-1 px-4 text-sm min-h-8 flex items-center">
-				<p>Personal projects and recent work in React, Svelte, Astro, Next.js, and more.</p>
-			</div>
-			{#if menuItems.length !== 0}
-				<div transition:fade|global class="my-4">
-					<HoverMenu items={menuItems} />
-				</div>
-			{/if}
-		</div>
-	</div>
-	<div
-		class="text-stone-900 z-50 fixed -bottom-20 -left-20"
-		transition:fly={{ duration: 1000, delay: 1500, x: -100, y: 100 }}
-	>
-		<Starburst size="256" />
-	</div>
+	<div id="work" class="h-full w-full flex flex-col gap-4 py-16" transition:slide={{duration: 800}}>
+    <!-- Header -->
+    <div class="flex flex-col bg-stone-900 text-stone-300 w-full p-4 md:p-8">
+        <h1 class="text-3xl md:text-5xl xl:text-7xl font-serif font-thin">Projects</h1>
+        <h2 class="font-mono bg-stone-900 text-stone-300 text-sm">
+          Personal projects and recent work in React, Svelte, Astro, Next.js, and more.
+        </h2>
+    </div>
+    <ProjectList {data} />
+  </div>
 {/if}

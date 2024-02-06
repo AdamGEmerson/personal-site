@@ -9,7 +9,7 @@
 	} from '@tabler/icons-svelte';
 	import { fly, slide } from 'svelte/transition';
 	import { quadOut } from 'svelte/easing';
-	import NavLink from './NavLink.svelte';
+	import NavLink from '../ui/NavLink.svelte';
 
 	let activeLink = 0;
 

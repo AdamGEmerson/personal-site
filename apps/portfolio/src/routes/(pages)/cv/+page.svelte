@@ -1,5 +1,5 @@
 <script>
-	import LinkButton from '../../../components/LinkButton.svelte';
+	import LinkButton from '../../../components/ui/LinkButton.svelte';
 	import resumePDF from '/src/AdamEmerson_CV_Nov23.pdf';
 	import { IconDownload } from '@tabler/icons-svelte';
 	import ogImage from '/src/images/adamemerson_og.png';

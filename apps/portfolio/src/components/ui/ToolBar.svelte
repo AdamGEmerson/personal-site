@@ -4,9 +4,9 @@
 	import { Marquee } from 'flowbite-svelte';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { toolBar } from '../stores/toolBar';
+	import { toolBar } from '../../stores/toolBar';
 	import { tweened } from 'svelte/motion';
-	import { capitalized } from '../utils/helpers';
+	import { capitalized } from '../../utils/helpers';
 
 	let url = '';
 	let crumbs: string[] = [];

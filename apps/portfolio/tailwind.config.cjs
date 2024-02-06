@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         'serif': ["Alliance and Data", "Swomun Serif", 'Times New Roman', 'serif'],
-        'sans': [ 'Open Sans', 'Verdana', 'sans-serif'],
+        'sans': [ 'Nexa', 'Verdana', 'sans-serif'],
         'mono': ['Andale Mono', 'monospace']
       },
       colors: {

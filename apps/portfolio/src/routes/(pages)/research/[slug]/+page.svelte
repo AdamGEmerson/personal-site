@@ -2,9 +2,9 @@
 	import { page } from '$app/stores';
 	import { slide, fly, blur } from 'svelte/transition';
 	import { projects } from '../../../../stores/featured';
-	import ProjectTitle from '../../../../components/ProjectTitle.svelte';
+	import ProjectTitle from '../../../../components/layout/project/ProjectTitle.svelte';
 	import { onMount } from 'svelte';
-	import SectionHeading from '../../../../components/SectionHeading.svelte';
+	import SectionHeading from '../../../../components/ui/SectionHeading.svelte';
 	let pages;
 
 	projects.subscribe((value) => {

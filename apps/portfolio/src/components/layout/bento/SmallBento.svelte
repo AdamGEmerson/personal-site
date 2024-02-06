@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { slide } from 'svelte/transition';
-	import { quintInOut } from 'svelte/easing';
+  import { quartInOut, quintInOut } from "svelte/easing";
 	import BentoItem from './BentoItem.svelte';
 	import { IconGeometry, IconMicroscope } from '@tabler/icons-svelte';
-	import TimerBar from './TimerBar.svelte';
+	import TimerBar from '../../ui/TimerBar.svelte';
 	import { onMount } from 'svelte';
 
 	export let featured: any[];
@@ -20,14 +20,30 @@
 {#if mounted}
 	<div
 		class="col-span-full row-span-5 order-2"
-		in:slide|global={{ duration: 1000, delay: 1600, easing: quintInOut }}
+		in:slide|global={{ duration: 1000, delay: 1600, easing: quartInOut }}
 	>
+
 		<div class="flex w-full gap-2 flex-wrap">
 			<div class="flex w-full flex-row gap-2">
 				<BentoItem name="github" variant="icon" />
 				<BentoItem name="linkedin" variant="icon" />
 				<BentoItem name="dribbble" variant="icon" />
 			</div>
+      <div class="flex flex-row w-full justify-between text-stone-300 text-xl font-serif gap-2">
+        <a
+          class="w-full flex justify-center items-center bg-stone-900 h-16 hover:bg-stone-900/95 hover:scale-[101%]"
+          href="/projects"
+        >
+          Projects
+        </a>
+        <a
+          class="w-full flex items-center justify-center align-middle bg-stone-900 h-16 hover:bg-stone-900/95 hover:scale-[101%]"
+          href="/blog"
+        >
+          Blog
+        </a>
+      </div>
+
 			<div class="flex flex-col gap-2">
 				{#each featured as item}
 					<a
@@ -53,7 +69,6 @@
 						{#key item}
 							<div class="h-full">
 								<div
-									in:slide={{ delay: 1000, duration: 1000, easing: quintInOut }}
 									class="w-full h-full bg-teal-900"
 								>
 									<img

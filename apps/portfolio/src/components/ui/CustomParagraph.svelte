@@ -5,6 +5,6 @@
 	export let portableText: BlockComponentProps;
 </script>
 
-<div class="mt-4">
+<div class="mt-4 text-md md:text-lg leading-relaxed">
 	<slot />
 </div>

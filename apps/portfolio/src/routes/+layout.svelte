@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import posthog from 'posthog-js';
 	import { page } from '$app/stores';
-	import ToolBar from '../components/ToolBar.svelte';
+	import ToolBar from '../components/ui/ToolBar.svelte';
 
 	let currentPath = '';
 
@@ -30,8 +30,8 @@
 	});
 </script>
 
-<div class="absolute w-screen flex flex-col p-8 md:p-24 h-screen overflow-x-clip">
-	<div class="text-stone-900 flex-1 flex flex-col gap-16">
+<div class="absolute w-screen flex flex-col items-center p-8 md:p-24 h-screen overflow-x-clip overflow-y-scroll">
+	<div class="text-stone-900 flex-1 flex flex-col gap-16 items-center align-middle 2xl:max-w-screen-2xl w-full">
 		<ToolBar />
 		<slot />
 	</div>

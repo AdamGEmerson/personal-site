@@ -1,5 +1,5 @@
 <script lang="ts">
-	import SectionHeading from '../SectionHeading.svelte';
+	import SectionHeading from '../ui/SectionHeading.svelte';
 	export let wins: number;
 	export let streak: number;
 	export let bestStreak: number;

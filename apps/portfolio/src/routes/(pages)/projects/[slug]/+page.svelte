@@ -1,17 +1,18 @@
 <script lang="ts">
-	import { fly, blur } from 'svelte/transition';
-	import ProjectTitle from '../../../../components/ProjectTitle.svelte';
+	import { fly, fade, slide } from 'svelte/transition';
+	import ProjectTitle from '../../../../components/layout/project/ProjectTitle.svelte';
 	import { onMount } from 'svelte';
-	import SectionHeading from '../../../../components/SectionHeading.svelte';
-	import ImageGallery from '../../../../components/ImageGallery.svelte';
+	import SectionHeading from '../../../../components/ui/SectionHeading.svelte';
+	import ImageGallery from '../../../../components/ui/ImageGallery.svelte';
 	import { goTo } from '../../../../utils/helpers';
 	import type { PageData } from './$types';
 	import { PortableText } from '@portabletext/svelte';
-	import CustomParagraph from '../../../../components/CustomParagraph.svelte';
-	import CustomLink from '../../../../components/CustomLink.svelte';
+	import CustomParagraph from '../../../../components/ui/CustomParagraph.svelte';
+	import CustomLink from '../../../../components/ui/CustomLink.svelte';
 	import { tweened } from 'svelte/motion';
-	import { circInOut } from 'svelte/easing';
+  import { circInOut, quartInOut, quintInOut, quintOut } from "svelte/easing";
 	import { hoveredLink } from '../../../../stores/hoveredLink';
+  import StackIcon from "../../../../components/ui/StackIcon.svelte";
 
 	let hovered: { element: HTMLAnchorElement | null } = { element: null };
 
@@ -73,71 +74,72 @@
 </svelte:head>
 
 {#if mounted}
-	{#if data.title}
-		<div class="relative" out:blur|global={{ duration: 500, delay: 0 }}>
-			<!--{#if hovered.element}-->
-			<!--	<div-->
-			<!--		transition:fade={{ duration: 500, delay: 0 }}-->
-			<!--		class="bg-stone-900 absolute -z-10"-->
-			<!--		style={`top: ${$linkHighlightY}px; left: ${$linkHighlightX}px; opacity: ${$linkFade}; width: ${$width}px; height: ${-->
-			<!--			hovered.element ? Math.floor(hovered.element.getBoundingClientRect().height) : 0-->
-			<!--		}px;`}-->
-			<!--	/>-->
-			<!--{/if}-->
+		<div class="relative py-16 md:py-0" transition:fade={{ delay: 500 }}>
 			<div
-				class="flex flex-col-reverse lg:flex-row gap-8 py-4 lg:py-8 items-start h-full align-middle overflow-auto"
+				class="flex flex-col gap-4 items-start align-middle overflow-auto"
 			>
-				<div class="lg:flex-1">
 					<ProjectTitle
-						data={{ title: pageData.title, subtitle: pageData.subtitle }}
-						classes="hidden lg:block"
+						data={{ title: pageData.title, subtitle: pageData.subtitle, oneLiner: pageData.oneLiner }}
+						classes="w-full"
 					/>
-					<div class="flex justify-start gap-4">
-						<div class="flex w-3/4 flex-col justify-start">
-							<SectionHeading>Links</SectionHeading>
-							<div
-								class="flex flex-row justify-around items-center align-middle pb-4"
-								in:fly|global={{ delay: 200, duration: 500 }}
-							>
-								{#if pageData.projectLinks}
-									{#each pageData.projectLinks as link}
-										<div
-											role="button"
-											tabindex={0}
-											class="main-link font-mono group p-1 px-2 hover:cursor-pointer hover:bg-stone-900 w-full"
-											on:click={(e) => goTo(e, link.url)}
-											on:keypress={(e) => goTo(e, link.url)}
-										>
-											<a href={link.url} class="group-hover:text-stone-300">{link.name}</a>
-										</div>
-									{/each}
-								{/if}
-							</div>
-							<div class="flex flex-col justify-start w-64">
-								<SectionHeading>Tech Stack</SectionHeading>
-								<div
-									class="flex flex-row justify-around items-center align-middle"
-									in:fly|global={{ delay: 200, duration: 500 }}
-								>
-									{#each pageData.madeWith as tech}
-										<div class="relative h-12 flex-1 flex self-center text-center justify-center">
-											<svelte:component
-												this={tech.icon}
-												slot="icon"
-												class="w-3/5 h-3/5 self-center text-stone-900"
-											/>
-										</div>
-									{/each}
-								</div>
-							</div>
+					<div class="flex flex-col-reverse lg:flex-row justify-start gap-4">
+						<div transition:fly={{ duration: 500, x: -100, delay: 500 }} class="flex w-full lg:w-1/2 flex-col justify-start gap-4">
+              <div class="flex flex-col gap-2">
+                <SectionHeading>Links</SectionHeading>
+                <div
+                  class="flex flex-row justify-start items-center align-middle gap-2"
+                  in:fly|global={{ delay: 200, duration: 500 }}
+                >
+                  {#if pageData.projectLinks}
+                    {#each pageData.projectLinks as link, i (link)}
+                      <a
+                        in:fly|global={{x: -100, duration: 800, delay: 600 + (100 * i), easing:quartInOut }}
+                        tabindex={0}
+                        class="main-link font-mono group hover:cursor-pointer"
+                        href={link.url}
+                        target="_blank"
+                      >
+                          <div class="relative h-12 w-12 md:h-16 md:w-16 flex self-center text-center justify-center text-stone-300 bg-stone-900">
+                            <StackIcon brand={link.name.toLowerCase()} />
+                          </div>
+                      </a>
+                    {/each}
+                  {/if}
+                </div>
+              </div>
+              <div class="flex flex-col gap-2">
+                <SectionHeading>Tech Stack</SectionHeading>
+                <div
+                  class="flex flex-row justify-start items-center align-middle gap-2"
+                  in:fly|global={{ delay: 200, duration: 500 }}
+                >
+                  {#each pageData.madeWith as tech, i (tech)}
+                    <div in:fly|global={{x: -100, duration: 800, delay: 600 + (100 * i), easing:quartInOut }} class="relative h-12 md:h-16 w-12 md:w-16 flex self-center text-center justify-center text-stone-300 bg-stone-900">
+                      <StackIcon brand={tech.toLowerCase()} />
+                    </div>
+                  {/each}
+                </div>
+              </div>
+<!--              <SectionHeading>Timeline</SectionHeading>-->
+<!--              <div-->
+<!--                class="flex flex-row justify-around items-center align-middle min-h-16"-->
+<!--                in:fly|global={{ delay: 200, duration: 500 }}-->
+<!--              >-->
+<!--                No data-->
+<!--              </div>-->
 						</div>
 						<div transition:fly={{ duration: 500, x: 100, delay: 500 }} class="p-1 w-full">
 							<ImageGallery images={data.images} />
 						</div>
 					</div>
-					<div class="overflow-scroll" in:blur|global={{ duration: 500, delay: 500 }}>
-						<SectionHeading>About</SectionHeading>
-						<p class="my-4">
+					<div class="flex flex-col items-center">
+            <div class={`flex flex-1 flex-col justify-start gap-4 w-full`}>
+              <div class="flex flex-row justify-start bg-stone-900 text-stone-300 p-4 md:p-8">
+                <h3 class="text-3xl font-serif font-thin">About The Project</h3>
+              </div>
+            </div>
+
+            <p class="px-8 md:px-16">
 							<PortableText
 								value={pageData.description}
 								components={{
@@ -151,16 +153,11 @@
 							/>
 						</p>
 					</div>
-					<div class="self-start flex flex-row">
-						<ProjectTitle
-							data={{ title: pageData.title, subtitle: pageData.subtitle }}
-							classes="block lg:hidden"
-						/>
-					</div>
+<!--        <div class={`flex flex-1 flex-col justify-start gap-4 w-full mt-8`}>-->
+<!--          <div class="flex flex-row justify-start bg-stone-900 text-stone-300 p-4 md:p-8">-->
+<!--            <h3 class="text-3xl font-serif font-thin">Other Projects</h3>-->
+<!--          </div>-->
+<!--        </div>-->
 				</div>
 			</div>
-		</div>
-	{:else}
-		hello
-	{/if}
 {/if}

@@ -77,7 +77,7 @@
 					<img
 						src={image.src}
 						alt={image.alt}
-						class="object-cover object-center min-h-max h-auto max-w-full"
+						class="object-cover object-center h-full w-auto"
 					/>
 				{/if}
 			{/each}

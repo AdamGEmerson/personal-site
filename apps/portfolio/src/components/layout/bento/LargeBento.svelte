@@ -3,7 +3,7 @@
 	import { quintOut } from 'svelte/easing';
 	import BentoItem from './BentoItem.svelte';
 	import { IconGeometry, IconMicroscope } from '@tabler/icons-svelte';
-	import TimerBar from './TimerBar.svelte';
+	import TimerBar from '../../ui/TimerBar.svelte';
 	import { onMount } from 'svelte';
 
 	export let featured: any[];
@@ -39,7 +39,7 @@
 							<h2 class="font-serif text-5xl">{item.title}</h2>
 						</div>
 					</div>
-					<TimerBar {timer} />
+          <TimerBar {timer} />
 					{#key item}
 						<div class="h-full" in:slide={{ delay: 200, duration: 1000, easing: quintOut }}>
 							<img
@@ -49,7 +49,7 @@
 							/>
 						</div>
 					{/key}
-					<p class="font-mono text-md">{item.description}</p>
+					<p class="font-mono text-md">{item.oneLiner}</p>
 				</div>
 			</a>
 		{/each}
@@ -84,8 +84,8 @@
 			href={'/projects'}
 		>
 			<div class="flex-1 z-10">
-				<h2 class="font-serif text-xl z-10">More Projects</h2>
-				<p class="font-mono text-sm z-10">All the other stuff that doesn't fit on this page</p>
+				<h2 class="font-serif text-2xl z-10">Projects</h2>
+				<p class="font-mono text-md z-10">Other software and development projects I have worked on previously.</p>
 			</div>
 			<IconGeometry
 				class="z-0 absolute block -bottom-10 left-50 h-96 w-96 text-stone-800 group-hover:text-stone-700"

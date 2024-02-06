@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { projects } from '../../../stores/featured.js';
 	import ogImage from '/src/images/adamemerson_og.png';
-	import HoverMenu from '../../../components/HoverMenu.svelte';
+	import HoverMenu from '../../../components/layout/HoverMenu.svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
-	import Starburst from '../../../components/Starburst.svelte';
+	import Starburst from '../../../components/ui/Starburst.svelte';
 
 	let pages: { [key: string]: Project };
 	projects.subscribe((value) => {
