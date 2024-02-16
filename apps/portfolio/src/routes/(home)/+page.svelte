@@ -23,13 +23,7 @@
 	let typedTitle = '';
 	let index = 0;
 	let isTyping = false;
-	let ghostBox: HTMLDivElement;
 	let intervalId: any;
-	let menuItems: MenuItem[] = [
-		{ name: 'Projects', path: '/projects' },
-		{ name: 'Research', path: '/research' },
-		{ name: 'CV', path: '/cv' }
-	];
 	let typeWriter: NodeJS.Timeout; // eslint-disable-line no-undef
 	const typing = () => (typeWriter = setInterval(typeChar, 100));
 	const stopTyping = () => clearInterval(typeWriter);
@@ -48,13 +42,23 @@
 	gsap.registerPlugin(Flip);
 
 	function flip() {
-		const state = Flip.getState('.bento-item');
+		const state = Flip.getState('.bento-item,.title', {
+      props: 'fontSize,lineHeight,padding,margin'
+    });
 
 		requestAnimationFrame(() => {
 			Flip.from(state, {
-				target: '.bento-item',
-				ease: 'back.inOut(0.5)',
-				duration: 1
+				target: '.bento-item,.title,.title-container',
+				ease: 'power3.inOut',
+        nested: true,
+        absolute: true,
+				duration: 1,
+        onLeave: el => (
+          gsap.fromTo(el, {scale: 1, duration: 0.5}, { scale: 0, duration: .5 })
+        ),
+        onEnter: el => (
+          gsap.fromTo(el, {scale: 0, duration: .5}, { scale: 1, duration: .5})
+        )
 			});
 		});
 	}
@@ -64,11 +68,7 @@
 		easing: linear
 	});
 	const rotateFeature = () => {
-		if (window.innerWidth < 768) {
-			bentoItems = [...bentoItems.slice(1, 3), bentoItems[0]];
-		} else {
-			bentoItems = [...bentoItems.slice(1), bentoItems[0]];
-		}
+    bentoItems = [...bentoItems.slice(1), bentoItems[0]];
 		flip();
 		resetInterval();
 	};
@@ -105,6 +105,7 @@
 	});
 
 	onDestroy(() => {
+    console.log('destroying');
 		clearInterval(intervalId);
 	});
 
@@ -113,11 +114,9 @@
 	}
 
 	$: {
-		if (innerWidth < 768) {
-			mid = bentoItems.slice(1, 3);
-		} else {
 			mid = bentoItems.slice(1);
-		}
+      console.log('bentoItems', bentoItems)
+      console.log('mid', mid);
 	}
 </script>
 
@@ -149,7 +148,7 @@
 
 <div class="w-full h-full flex items-center justify-around">
 	<div
-		class="grid grid-cols-6 grid-rows-6 md:grid-cols-16 md:grid-rows-4 gap-2 md:grid-flow-col grid-flow-row w-[90vw] h-full md:w-[80vw] md:h-[80vh]"
+		class="grid grid-cols-6 grid-rows-6 md:grid-cols-16 md:grid-rows-4 gap-2 md:grid-flow-col grid-flow-row w-[90vw] h-full md:w-[80vw]"
 	>
 		<!-- Heading -->
 		{#if mounted}

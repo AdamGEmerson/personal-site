@@ -27,7 +27,7 @@ export const load: PageLoad = async ({ params }) => {
 				src: urlFor(image.image).url()
 			}))
 		}));
-		while (payload.length < 4) {
+		while (payload.length < 3) {
 			payload.push(payload[0]);
 		}
 		return {

@@ -16,6 +16,7 @@ const config = {
 				'/cv',
 				'/projects',
 				'/research',
+				'/blog',
 				'/projects/auragraph',
 				'/projects/sightstone',
 				'/projects/universe'

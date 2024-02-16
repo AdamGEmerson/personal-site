@@ -48,7 +48,7 @@
 				{#each featured as item}
 					<a
 						in:slide|global={{ easing: quintInOut, duration: 1000 }}
-						data-flip-id={item._id}
+						data-flip-id={item.title}
 						href={`/${item.isResearch ? 'research' : 'projects'}/${item.slug}`}
 						class="bento-item w-full h-full p-4 bg-stone-900 text-stone-300 hover:bg-stone-900/95 hover:cursor-pointer flex flex-col gap-2 justify-start"
 					>
@@ -62,7 +62,7 @@
 									{/if}
 									<h2 class="font-serif text-lg sm:text-xl">{item.title}</h2>
 								</div>
-								<p class="font-mono text-[8px] md:text-sm">{item.oneLiner}</p>
+								<p class="font-mono text-xs">{item.oneLiner}</p>
 							</div>
 						</div>
 						<TimerBar {timer} />

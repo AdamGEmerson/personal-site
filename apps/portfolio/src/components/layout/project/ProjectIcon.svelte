@@ -1,10 +1,11 @@
 <script lang="ts">
   import { IconMicroscope, IconGeometry } from '@tabler/icons-svelte';
   export let isResearch: boolean;
+  export let color:string | null = null;
 </script>
 
 {#if isResearch}
-  <IconMicroscope/>
+  <IconMicroscope class={`${color ? color : 'text-stone-600'}`}/>
 {:else}
-  <IconGeometry/>
+  <IconGeometry class={`${color ? color : 'text-stone-600'}`}/>
 {/if}

@@ -77,11 +77,11 @@
 {#if mounted}
 <div class="flex flex-col gap-4" in:fade|global={{delay: 800, duration: 400}}>
   <!--Legend -->
-  <div class="flex flex-row gap-4 font-mono">
-    <div class="flex flex-row gap-2">
+  <div class="flex flex-row gap-4 font-mono text-xs sm:text-sm">
+    <div class="flex flex-row gap-2 items-center">
       <IconGeometry size={24} /> = Application
     </div>
-    <div class="flex flex-row gap-2">
+    <div class="flex flex-row gap-2 items-center">
       <IconMicroscope size={24} /> = Research
     </div>
   </div>
@@ -161,11 +161,11 @@
               <div class="flex justify-center align-middle w-12">
                 <ProjectIcon isResearch={item.isResearch} />
               </div>
-              <div class="flex flex-1 flex-col self-end">
+              <div class="flex flex-1 flex-col self-center">
                 <h3 class="font-serif text-2xl">{item.title}</h3>
-                <p>{item.subtitle}</p>
+                <p class="text-xs">{item.subtitle}</p>
               </div>
-              <p class="self-end">{new Date(item.updated).getFullYear()}</p>
+              <p class="text-xs">{new Date(item.updated).getFullYear()}</p>
               <div class="h-full w-auto text-stone-300 flex justify-center align-middle">
                 <IconArrowRight size={48} class="self-center transform -rotate-45"/>
               </div>
