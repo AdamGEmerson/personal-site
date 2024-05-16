@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import posthog from 'posthog-js';
 	import { page } from '$app/stores';
-	import ToolBar from '../components/ui/ToolBar.svelte';
+	import ToolBar from '../lib/components/ui/ToolBar.svelte';
 
 	let currentPath = '';
 

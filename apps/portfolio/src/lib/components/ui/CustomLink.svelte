@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { MarkComponentProps } from '@portabletext/svelte';
-	import { hoveredLink } from '../../stores/hoveredLink';
+	import { hoveredLink } from '../../../stores/hoveredLink';
 
 	// Property custom marks receive from @portabletext/svelte when redered
 	export let portableText: MarkComponentProps<{

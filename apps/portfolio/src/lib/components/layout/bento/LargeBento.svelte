@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { blur, slide } from 'svelte/transition';
+	import { blur } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
 	import BentoItem from './BentoItem.svelte';
 	import { IconGeometry, IconWritingSign  } from '@tabler/icons-svelte';
@@ -10,7 +10,7 @@
 	export let featured: any[];
 	export let timer: any;
 	export let mid: any[];
-	export let preloadedImages: { [key: string]: { src: string; alt: string } };
+	// export let preloadedImages: { [key: string]: { src: string; alt: string } };
 	let intervalId: any;
 	let imageShown = true;
 
@@ -30,22 +30,22 @@
 				class="bento-item w-full h-full p-8 bg-stone-900 text-stone-300 hover:bg-stone-900/95 hover:cursor-pointer flex flex-col gap-2 justify-start hover:scale-[101%]"
 			>
 				<div class={'flex flex-col gap-4'}>
+          <!--{#key item}-->
+          <!--  <div class="h-full">-->
+          <!--    <img-->
+          <!--      src={preloadedImages[item._id].src}-->
+          <!--      alt={preloadedImages[item._id].alt}-->
+          <!--      class="h-auto w-full border-2 border-stone-300 object-cover"-->
+          <!--    />-->
+          <!--  </div>-->
+          <!--{/key}-->
 					<div class="flex-1">
 						<div class="flex flex-row gap-4 justify-start items-center align-middle title-container h-8" data-flip-id={item.title + 'container'}>
-							<ProjectIcon isResearch={item.isResearch} />
+							<ProjectIcon isResearch={item.isResearch} flipID={item.title + 'icon'}/>
 							<h2 class="font-serif title" data-flip-id={item.title + 'title'}>{item.title}</h2>
 						</div>
 					</div>
           <TimerBar {timer} />
-					{#key item}
-						<div class="h-full">
-							<img
-								src={preloadedImages[item._id].src}
-								alt={preloadedImages[item._id].alt}
-								class="h-auto w-full border-2 border-stone-300 object-cover"
-							/>
-						</div>
-					{/key}
 					<p class="font-mono text-sm">{item.oneLiner}</p>
 				</div>
 			</a>

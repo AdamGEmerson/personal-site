@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { cubicInOut } from 'svelte/easing';
-	import { capitalized } from '../../utils/helpers';
+	import { capitalized } from '../../../utils/helpers';
 	export let url = '';
 	console.log('URL', url);
 	let crumbs: string[] = [];

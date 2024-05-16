@@ -4,9 +4,9 @@
 	import { onMount } from 'svelte';
 	import { cards } from '../../stores/cards';
 	import { toolBar } from '../../stores/toolBar';
-	import HoverMenu from '../../components/layout/HoverMenu.svelte';
-	import starburst from '../../components/ui/Starburst.svelte';
-	import Starburst from '../../components/ui/Starburst.svelte';
+	import HoverMenu from '../../lib/components/layout/HoverMenu.svelte';
+	import starburst from '../../lib/components/ui/Starburst.svelte';
+	import Starburst from '../../lib/components/ui/Starburst.svelte';
 
 	let title = 'Adam G. Emerson';
 	let typedTitle = '';

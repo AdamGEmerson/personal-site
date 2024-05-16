@@ -1,18 +1,17 @@
 <script lang="ts">
-	import { fly, fade, slide } from 'svelte/transition';
-	import ProjectTitle from '../../../../components/layout/project/ProjectTitle.svelte';
+	import { fly, fade } from 'svelte/transition';
+	import ProjectTitle from '../../../../lib/components/layout/project/ProjectTitle.svelte';
 	import { onMount } from 'svelte';
-	import SectionHeading from '../../../../components/ui/SectionHeading.svelte';
-	import ImageGallery from '../../../../components/ui/ImageGallery.svelte';
-	import { goTo } from '../../../../utils/helpers';
+	import SectionHeading from '../../../../lib/components/ui/SectionHeading.svelte';
+	import ImageGallery from '../../../../lib/components/ui/ImageGallery.svelte';
 	import type { PageData } from './$types';
 	import { PortableText } from '@portabletext/svelte';
-	import CustomParagraph from '../../../../components/ui/CustomParagraph.svelte';
-	import CustomLink from '../../../../components/ui/CustomLink.svelte';
+	import CustomParagraph from '../../../../lib/components/ui/CustomParagraph.svelte';
+	import CustomLink from '../../../../lib/components/ui/CustomLink.svelte';
 	import { tweened } from 'svelte/motion';
-  import { circInOut, quartInOut, quintInOut, quintOut } from "svelte/easing";
+  import { circInOut, quartInOut } from "svelte/easing";
 	import { hoveredLink } from '../../../../stores/hoveredLink';
-  import StackIcon from "../../../../components/ui/StackIcon.svelte";
+  import StackIcon from "../../../../lib/components/ui/StackIcon.svelte";
 
 	let hovered: { element: HTMLAnchorElement | null } = { element: null };
 

@@ -2,7 +2,7 @@
 	import { tweened } from 'svelte/motion';
   import { fade } from 'svelte/transition';
 	import { circInOut } from 'svelte/easing';
-  import type { PageData } from "../../../../.svelte-kit/types/src/routes/(pages)/projects/$types";
+  import type { PageData } from "../../../../../.svelte-kit/types/src/routes/(pages)/projects/$types";
   import { onMount } from "svelte";
   import ProjectIcon from "./ProjectIcon.svelte";
   import FilterIcon from "./FilterIcon.svelte";

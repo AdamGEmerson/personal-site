@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { fly, slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
-	import SectionHeading from '../../../components/ui/SectionHeading.svelte';
+	import SectionHeading from '../../../lib/components/ui/SectionHeading.svelte';
 	import { capitalized } from '../../../utils/helpers.js';
-	import BlackJackStats from '../../../components/blackjack/BlackJackStats.svelte';
-	import Scoreboard from '../../../components/blackjack/Scoreboard.svelte';
-	import SimpleCard from '../../../components/blackjack/SimpleCard.svelte';
+	import BlackJackStats from '../../../lib/components/blackjack/BlackJackStats.svelte';
+	import Scoreboard from '../../../lib/components/blackjack/Scoreboard.svelte';
+	import SimpleCard from '../../../lib/components/blackjack/SimpleCard.svelte';
 	import { gsap } from 'gsap';
 	import { Flip } from 'gsap/dist/Flip';
 

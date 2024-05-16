@@ -2,15 +2,21 @@
 	import { slide, blur, fly } from 'svelte/transition';
 	import { gsap } from 'gsap';
 	import Flip from 'gsap/dist/Flip';
-	import { Marquee } from 'flowbite-svelte';
+  import { Marquee } from "flowbite-svelte";
 	import { tweened } from 'svelte/motion';
-	import { linear, quintOut } from 'svelte/easing';
+  import { linear, quartInOut, quintOut } from "svelte/easing";
 	import { onDestroy, onMount } from 'svelte';
 	import type { PageData } from './$types';
-	import LargeBento from '../../components/layout/bento/LargeBento.svelte';
-	import SmallBento from '../../components/layout/bento/SmallBento.svelte';
-	import Starburst from '../../components/ui/Starburst.svelte';
+  import Card from "$lib/components/ui/Card.svelte";
 	import ogImage from '/src/images/adamemerson_og.png';
+  import {
+    IconBrandDribbble,
+    IconBrandGithub,
+    IconBrandLinkedin,
+    IconGeometry,
+    IconMicroscope
+  } from "@tabler/icons-svelte";
+  import IconSqaure from "$lib/components/ui/IconLink.svelte";
 
 	export let data: PageData;
 
@@ -25,6 +31,11 @@
 	let isTyping = false;
 	let intervalId: any;
 	let typeWriter: NodeJS.Timeout; // eslint-disable-line no-undef
+
+  const links = [
+    { title: "Projects", href: "/projects", description: "Recent web development, design, and research projects."},
+    { title: "Blog", href: "/blog", description: "Dev-logs, musings, and essays."}
+  ];
 	const typing = () => (typeWriter = setInterval(typeChar, 100));
 	const stopTyping = () => clearInterval(typeWriter);
 
@@ -146,18 +157,15 @@
 <h1 class="font-serif hidden">Adam G. Emerson</h1>
 <h2 class="hidden">Software Engineer and Designer</h2>
 
-<div class="w-full h-full flex items-center justify-around">
-	<div
-		class="grid grid-cols-6 grid-rows-6 md:grid-cols-16 md:grid-rows-4 gap-2 md:grid-flow-col grid-flow-row w-[90vw] h-full md:w-[80vw]"
-	>
+<div class="w-full h-full flex items-center justify-start flex-col gap-2 md:gap-4">
 		<!-- Heading -->
 		{#if mounted}
 			<div
 				in:slide={{ duration: 1000, easing: quintOut, axis: 'x' }}
-				class="col-span-full row-span-1 md:row-span-1 bg-stone-900 text-stone-300 p-8 order-first"
+				class="w-full h-28 md:h-48 bg-stone-900 text-stone-300 p-4 md:p-8 order-first"
 			>
 				<h2
-					class="text-3xl sm:text-6xl lg:text-7xl transition-all font-serif flex items-end"
+					class="text-2xl sm:text-4xl md:text-6xl transition-all font-serif flex items-end"
 					out:fly
 				>
 					{typedTitle}
@@ -165,24 +173,42 @@
 				<!--			<p class="font-mono">Full Stack Engineer • Web Designer</p>-->
 				<div in:blur|global={{ duration: 1000, delay: 800 }}>
 					<Marquee
-						class="text-xs md:text-lg font-mono bg-stone-900 text-stone-300 p-1 w-full align-middle"
+						class="text-xs md:text-md font-mono bg-stone-900 text-stone-300 p-1 w-full align-middle"
 						speed={0.1}
 						hoverSpeed={0.1}
 					>
+            <div class="mx-8 whitespace-nowrap">HCI Research</div>
 						<div class="mx-8 whitespace-nowrap">Full Stack Development</div>
 						<div class="mx-8 whitespace-nowrap">Web Design</div>
-						<div class="mx-8 whitespace-nowrap">Human Computer Interaction</div>
 						<div class="mx-8 whitespace-nowrap">Internet Magic</div>
 					</Marquee>
 				</div>
 			</div>
+      <div class="flex flex-col-reverse md:flex-row w-full h-full md:h-auto text-stone-300 gap-2 md:gap-4">
+        {#each links as link, i}
+            <Card title={link.title} description={link.description} href={link.href} {i} />
+        {/each}
+        <div
+          class="flex md:flex-col justify-between gap-2 md:gap-4"
+          in:fly={{ duration: 500, delay: 1400, y: -100 }}
+        >
+          <IconSqaure href="https://github.com/adamgemerson" alt="Github">
+            <IconBrandGithub class="h-8 w-8"/>
+          </IconSqaure>
+          <IconSqaure href="https://linkedin.com/in/adamgemerson" alt="LinkedIn">
+            <IconBrandLinkedin class="h-8 w-8" />
+          </IconSqaure>
+          <IconSqaure href="https://scholar.google.com/citations?user=hORnZF0AAAAJ&hl=en" alt="Research">
+            <IconMicroscope class="h-8 w-8" />
+          </IconSqaure>
+        </div>
+      </div>
 		{/if}
-		{#if innerWidth >= 769}
-			<LargeBento {featured} {mid} {preloadedImages} {timer} />
-		{:else}
-			<SmallBento {featured} {mid} {preloadedImages} {timer} />
-		{/if}
-	</div>
+		<!--{#if innerWidth >= 769}-->
+		<!--	<LargeBento {featured} {mid} {preloadedImages} {timer} />-->
+		<!--{:else}-->
+		<!--	<SmallBento {featured} {mid} {preloadedImages} {timer} />-->
+		<!--{/if}-->
 </div>
 <!--			&lt;!&ndash; Bento &ndash;&gt;-->
 <!--			<div class="col-span-full row-span-2 order-3 md:col-span-7 md:row-span-3 md:order-none">-->
@@ -274,13 +300,14 @@
 <!--			</div>-->
 <!--		</div>-->
 <!--	</div>-->
-{#if mounted}
-	<div
-		class="text-stone-900 z-50 fixed -bottom-14 -left-10 sm:-bottom-20 sm:-left-20"
-		transition:fly={{ duration: 1000, delay: 3600, x: -100, y: 100 }}
-	>
-		<Starburst size="256" />
-	</div>
-{/if}
+<!--{#if mounted}-->
+<!--	<div-->
+<!--		class="text-stone-900 z-50 fixed -bottom-14 -left-10 sm:-bottom-20 sm:-left-20"-->
+<!--		transition:fly={{ duration: 1000, delay: 3600, x: -100, y: 100 }}-->
+<!--	>-->
+<!--		<Starburst size="256" />-->
+<!--	</div>-->
+<!--{/if}-->
 
 <svelte:window bind:innerWidth />
+
