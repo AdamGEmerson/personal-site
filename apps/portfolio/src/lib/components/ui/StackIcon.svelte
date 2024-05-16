@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, SvelteComponent } from "svelte";
+  import { onMount } from "svelte";
   import {
     IconBrandAndroid,
     IconBrandAws,
@@ -14,7 +14,7 @@
     IconBrandSvelte,
     IconBrandTypescript,
     IconBrandYoutube,
-    IconCodeDots, IconCoffee, IconLink, IconShoppingBag
+    IconCodeDots, IconCoffee, IconLink
   } from "@tabler/icons-svelte";
 
   let iconsMap = {

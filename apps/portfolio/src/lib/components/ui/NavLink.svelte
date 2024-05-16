@@ -35,6 +35,7 @@
 	on:mouseenter={handleOnMouseEnter}
 	on:mouseleave={handleOnMouseExit}
 	aria-label="{name} Page"
+  role="navigation"
 >
 	<a
 		class="flex flex-col items-center justify-around font-normal justify-items-center m-auto p-4 {activeLink ===
